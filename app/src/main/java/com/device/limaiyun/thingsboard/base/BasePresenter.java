@@ -19,11 +19,14 @@ public abstract class BasePresenter<T extends BaseView,E extends BaseModel> {
 
     public void onStart() {}
 
-    public void onDestroy(){}
+    public void onDestroy(){
+        mView = null;
+    }
 
     public void onLoadMore(){}
 
     public void onRefresh(){}
+
 
 
 }

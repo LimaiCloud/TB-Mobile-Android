@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -17,10 +18,10 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends FragmentActivity {
     private BaseActivity activity;
     private Unbinder mUnbinder;
-    private Dialog mDialog;
+//    private Dialog mDialog;
     private BaseProgressDialog progressDialog;
     private App mApp;
     private static final List<Activity> mActivitys = new LinkedList<Activity>();
@@ -37,6 +38,11 @@ public abstract class BaseActivity extends Activity {
         activity = this;
 
         initView();
+        initFragment();
+    }
+
+    public void initFragment() {
+
     }
 
     public void initView() {}
@@ -76,6 +82,6 @@ public abstract class BaseActivity extends Activity {
             mActivitys.remove(activity);
         }
         mUnbinder.unbind();
-        mDialog.dismiss();
+//        mDialog.dismiss();
     }
 }

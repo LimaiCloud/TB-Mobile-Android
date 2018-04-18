@@ -8,11 +8,12 @@ public class LoginModel implements LoginPort {
 
     @Override
     public void login(String username, String password, OnLoginListener onLoginListener) {
-        if (username == null || password == null) {
+        if (username.isEmpty() || password.isEmpty()) {
+            onLoginListener.onUnaOrPwdEmpty();
             return;
         }
         if (username != null && password != null && !username.equals("") && !username.equals("")) {
-
+            onLoginListener.onSuccess();
         }
     }
 }
