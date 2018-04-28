@@ -1,2 +1,2 @@
 # TB-Mobile-Android
-  You can find the document at [gitbook](https://www.gitbook.com/book/xudongliu/tb-mobile-development/welcome)
+  When you first use this App,place click the image at the bottom of the login page,then input your own domain nameor IP address.
