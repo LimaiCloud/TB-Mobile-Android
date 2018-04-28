@@ -4,9 +4,29 @@ import android.app.Activity;
 import android.app.Application;
 
 import com.device.limaiyun.thingsboard.utils.Utils;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheEntity;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.cookie.CookieJarImpl;
+import com.lzy.okgo.cookie.store.DBCookieStore;
+import com.lzy.okgo.https.HttpsUtils;
+import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
+import com.lzy.okgo.model.HttpHeaders;
+import com.lzy.okgo.model.HttpParams;
 
+
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.OkHttpClient;
 
 /**
  * Created by Administrator on 2018/4/10 0010.
@@ -25,9 +45,12 @@ public class App extends Application {
         super.onCreate();
         instance = this;
         Utils.init(this);
-
-        initOkhttpClient();
+        OkGo.getInstance().init(instance);
     }
+
+
+
+
 
     /**
      * add activity
@@ -65,7 +88,5 @@ public class App extends Application {
         System.exit(0);
     }
 
-    public void initOkhttpClient(){
 
-    }
 }

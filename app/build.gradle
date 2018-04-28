@@ -9,7 +9,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        multiDexEnabled true
     }
+//    dexOptions {
+//        javaMaxHeapSize "4g"
+//    }
     buildTypes {
         release {
             minifyEnabled false
@@ -31,7 +35,9 @@ dependencies {
     compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'//Refresh Layout
     compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'//Refresh Header
     compile 'com.android.support:design:26.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.okio:okio:1.6.0'
-
+    compile 'com.youth.banner:banner:1.4.10'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.lzy.net:okgo:3.0.4'
+    compile 'com.google.code.gson:gson:2.8.2'
 }

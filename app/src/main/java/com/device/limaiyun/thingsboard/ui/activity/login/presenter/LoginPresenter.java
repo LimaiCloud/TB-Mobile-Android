@@ -5,6 +5,7 @@ import android.widget.PopupWindow;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BasePresenter;
+import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgModel;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgPort;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.LoginModel;
@@ -23,7 +24,7 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     private LoginPort mLoginPort;
     private BottomBgPort mBottomBgPort;
 
-    public LoginPresenter( LoginView mLoginView) {
+    public LoginPresenter(LoginView mLoginView) {
         this.mLoginView = mLoginView;
         mLoginPort = new LoginModel();
         mBottomBgPort = new BottomBgModel();
@@ -33,10 +34,15 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     public void login() {
         String username = mLoginView.getUsername();
         String password = mLoginView.getPassword();
-        mLoginPort.login(username,password,this);
+        if (username != null && password != null && !username.equals("") && !password.equals("") && Configs.BASE_URL.equals("")) {
+            ToastUtils.showShortToast("请添加服务器地址");
+            return;
+        }
+        mLoginView.showLoading();
+        mLoginPort.login(username, password, this);
     }
 
-    public void showBottomBg(){
+    public void showBottomBg() {
         View view = mLoginView.showIpPopwindow();
         mBottomBgPort.showBottomBg(view);
     }
@@ -49,8 +55,10 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
 
     @Override
     public void onSuccess() {
+        mLoginView.hinddenLoading();
         mLoginView.showToast("登录成功");
         mLoginView.jumpActivity();
+
     }
 
     @Override

@@ -9,7 +9,7 @@ import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
 import com.device.limaiyun.thingsboard.ui.fragment.home.AppFragment.view.AppFragment;
 import com.device.limaiyun.thingsboard.ui.fragment.home.CmriFragment.view.CmriFragment;
-import com.device.limaiyun.thingsboard.ui.fragment.home.MessageFragment.view.MessageFragment;
+import com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.view.HomeFragment;
 import com.device.limaiyun.thingsboard.ui.fragment.home.MyFragment.view.MyFragment;
 
 import butterknife.BindView;
@@ -22,7 +22,7 @@ import butterknife.OnClick;
 public class HomeActivity extends BaseActivity implements HomeView {
     @BindView(R.id.fl_main)
     FrameLayout flMain;
-    @BindView(R.id.rb_msg)
+    @BindView(R.id.rb_home)
     RadioButton rbMsg;
     @BindView(R.id.rb_cmr)
     RadioButton rbCmr;
@@ -40,14 +40,14 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void initFragment() {
-        MessageFragment messageFragment = new MessageFragment();
+        HomeFragment homeFragment = new HomeFragment();
         CmriFragment cmriFragment = new CmriFragment();
         AppFragment appFragment = new AppFragment();
         MyFragment myFragment = new MyFragment();
 
-        mFragments = new Fragment[]{messageFragment,cmriFragment,appFragment,myFragment};
+        mFragments = new Fragment[]{homeFragment,cmriFragment,appFragment,myFragment};
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.add(R.id.fl_main,messageFragment).commit();
+        ft.add(R.id.fl_main,homeFragment).commit();
         setIndexSelector(0);
     }
 
@@ -66,8 +66,8 @@ public class HomeActivity extends BaseActivity implements HomeView {
         mIndex = index;
     }
 
-    @OnClick(R.id.rb_msg)
-    public void getMsgFragment(){
+    @OnClick(R.id.rb_home)
+    public void getHomeFragment(){
         setIndexSelector(0);
     }
 

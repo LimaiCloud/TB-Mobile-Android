@@ -6,4 +6,5 @@ package com.device.limaiyun.thingsboard.base;
 
 public  class Configs {
     public static String BASE_URL = "";
+    public static String API_AUTH_LOGIN = "/api/auth/login";
 }

@@ -10,46 +10,61 @@
         android:layout_height="match_parent"
         android:layout_weight="1" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e8e8e8" />
+
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/rb_msg"
+            android:id="@+id/rb_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/home_selec"
             android:gravity="center"
-            android:text="@string/home_message"/>
+            android:text="@string/home_message" />
 
         <RadioButton
             android:id="@+id/rb_cmr"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
+            android:drawableTop="@drawable/cmr_selector"
             android:gravity="center"
-            android:text="@string/home_cmri"/>
+            android:text="@string/home_cmri" />
 
         <RadioButton
             android:id="@+id/rb_app"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
+            android:drawableTop="@drawable/app_selector"
             android:gravity="center"
-            android:text="@string/home_app"/>
+            android:text="@string/home_app" />
 
         <RadioButton
             android:id="@+id/rb_my"
             android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
+            android:drawableTop="@drawable/my_selector"
             android:gravity="center"
-            android:text="@string/home_my"/>
+            android:text="@string/home_my" />
 
     </RadioGroup>
 </LinearLayout>
