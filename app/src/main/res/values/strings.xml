@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">thingsboard</string>
+    <string name="input_username">请输入用户名</string>
+    <string name="input_paw">请输入密码</string>
+    <string name="login_btn">登录</string>
+    <string name="una_pwd_empty">用户名或密码为空</string>
+    <string name="home_message">首页</string>
+    <string name="home_cmri">通讯录</string>
+    <string name="home_app">应用</string>
+    <string name="home_my">我的</string>
+    <string name="titlt_IP">请输入域名或IP</string>
+    <string name="tv_ip_address">IP：</string>
+    <string name="cancle" >取消</string>
+    <string name="comfirm">确定</string>
+    <string name="eqipment_monitoring">设备监控</string>
+    <string name="data_board">数据看板</string>
+    <string name="warning_message">警报信息</string>
+    <string name="new_message">最新消息</string>
+    <string name="office_system">办公系统</string>
+    <string name="os_oa">OA</string>
+    <string name="easy_oa">办公更轻松</string>
+    <string name="os_erp">ERP</string>
+    <string name="financal_review">物料/财务查看更清晰</string>
+    <string name="os_mes">MES</string>
+    <string name="easy_product">生产执行更便捷</string>
+    <string name="os_plm">PLM</string>
+    <string name="process_control">流程控制更安全！</string>>
+</resources>
