@@ -41,7 +41,12 @@ public class BottomBgModel implements BottomBgPort {
                 @Override
                 public void onClick(View view) {
                     dialog.dismiss();
-                    Configs.BASE_URL = editText.getText().toString();
+                    String ip = editText.getText().toString();
+                    if (ip != null && !ip.equals("") && !ip.contains("http://")) {
+                        Configs.BASE_URL = "http://" + ip;
+                    } else if (ip != null && !ip.equals("") && ip.contains("http://")) {
+                        Configs.BASE_URL = ip;
+                    }
                 }
             });
         }
