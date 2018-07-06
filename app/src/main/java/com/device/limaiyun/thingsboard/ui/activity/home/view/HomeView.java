@@ -9,4 +9,5 @@ import com.device.limaiyun.thingsboard.base.BaseView;
 public interface HomeView extends BaseView{
 
 
+
 }

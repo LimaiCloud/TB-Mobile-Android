@@ -1,5 +1,7 @@
 package com.device.limaiyun.thingsboard.ui.activity.login.model;
 
+import com.device.limaiyun.thingsboard.bean.TokenBean;
+
 /**
  * Created by Administrator on 2018/4/11 0011.
  */
@@ -14,7 +16,7 @@ public interface OnLoginListener {
     /**
      * login success
      */
-    void onSuccess();
+    void onSuccess(TokenBean tokenBean);
 
     /**
      * login error

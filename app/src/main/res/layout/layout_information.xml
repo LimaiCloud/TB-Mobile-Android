@@ -10,9 +10,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <RelativeLayout
+            android:id="@+id/rl_equipment_msg"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@mipmap/equipment_bg"
@@ -39,9 +41,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="38dp">
+        android:layout_marginLeft="34dp"
+        >
 
         <RelativeLayout
+            android:id="@+id/rl_data_msg"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@mipmap/data_bg"
@@ -65,12 +69,15 @@
     </LinearLayout>
 
     <LinearLayout
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="38dp">
+        android:layout_marginLeft="34dp"
+        >
 
         <RelativeLayout
+            android:id="@+id/rl_alarm"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@mipmap/warning_bg"
@@ -96,9 +103,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="38dp">
+        android:layout_marginLeft="34dp">
 
         <RelativeLayout
+            android:id="@+id/rl_message"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:background="@mipmap/message_bg"

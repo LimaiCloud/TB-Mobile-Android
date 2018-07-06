@@ -13,6 +13,7 @@ import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
+import com.tencent.bugly.Bugly;
 
 
 import java.security.cert.CertificateException;
@@ -44,6 +45,7 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Bugly.init(getApplicationContext(),"362244f72b",false);
         Utils.init(this);
         OkGo.getInstance().init(instance);
     }
