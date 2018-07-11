@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
+import com.device.limaiyun.thingsboard.ui.activity.login.presenter.LoginPresenter;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Progress;
@@ -23,12 +24,15 @@ import static com.device.limaiyun.thingsboard.base.Configs.API_AUTH_LOGIN;
 public class LoginModel implements LoginPort {
 
     @Override
-    public void login(final String username, final String password, final OnLoginListener onLoginListener) {
+    public void login(String username, final String password, final OnLoginListener onLoginListener) {
         if (username.isEmpty() || password.isEmpty()) {
             onLoginListener.onUnaOrPwdEmpty();
             return;
         }
         if (username != null && password != null && !username.equals("") && !password.equals("")) {
+//            if (!username.contains("@limaicloud.com")) {
+//                username = username + "@limaicloud.com";
+//            }
             String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";
             OkGo.post(Configs.BASE_URL + API_AUTH_LOGIN)
                     .headers("Content-Type", "application/json")
@@ -42,6 +46,7 @@ public class LoginModel implements LoginPort {
 
                         @Override
                         public void onSuccess(com.lzy.okgo.model.Response<Object> response) {
+                            Log.e("response", "2:" + response.toString());
                             if (response.code() == 200) {
                                 ResponseBody raw_body = response.getRawResponse().body();
                                 BufferedSource source = raw_body.source();
@@ -51,11 +56,13 @@ public class LoginModel implements LoginPort {
                                         Gson gson = new Gson();
                                         TokenBean tokenBean = gson.fromJson(token, TokenBean.class);
                                         TokenBean.TOKEN = tokenBean.getToken();
-                                        onLoginListener.onSuccess();
+                                        onLoginListener.onSuccess(tokenBean);
                                     }
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
+                            } else {
+                                onLoginListener.onError();
                             }
                         }
 
@@ -67,6 +74,7 @@ public class LoginModel implements LoginPort {
                         @Override
                         public void onError(com.lzy.okgo.model.Response<Object> response) {
                             Log.e("response", "3:" + response.toString());
+
                         }
 
                         @Override
@@ -90,4 +98,6 @@ public class LoginModel implements LoginPort {
                     });
         }
     }
+
+
 }
