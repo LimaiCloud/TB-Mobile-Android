@@ -22,8 +22,8 @@ public class DataPresenter extends BasePresenter implements DashboardsListener {
 
     }
 
-    public void getDataDashBoards() {
-        port.getDashBoards(this);
+    public void getDataDashBoards( String scopes,String customerId) {
+        port.getDashBoards(scopes,customerId,this);
     }
 
 

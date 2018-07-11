@@ -7,5 +7,5 @@ import com.device.limaiyun.thingsboard.bean.DashBoardsBean;
  */
 
 public interface DataPort {
-    void getDashBoards(DashboardsListener listener);
+    void getDashBoards(String customerId,String scopes,DashboardsListener listener);
 }

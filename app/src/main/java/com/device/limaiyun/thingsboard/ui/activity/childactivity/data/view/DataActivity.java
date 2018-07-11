@@ -2,6 +2,7 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.data.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -40,6 +41,8 @@ public class DataActivity extends BaseActivity implements DataView {
     @BindView(R.id.ll_back)
     LinearLayout ll_back;
     private Context mContext;
+    private String scopes;
+    private String customerId;
 
     @Override
     protected int getLayout() {
@@ -50,11 +53,15 @@ public class DataActivity extends BaseActivity implements DataView {
     public void initView() {
         presenter = new DataPresenter(this);
         mContext = this;
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        scopes = extras.getString("scopes");
+        customerId = extras.getString("customerId");
     }
 
     @Override
     public void initData() {
-        presenter.getDataDashBoards();
+        presenter.getDataDashBoards(scopes,customerId);
     }
 
     @Override
