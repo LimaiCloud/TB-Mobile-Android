@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home_cmri"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="53dp"
+        android:background="#3783d2">
+
+
+        <TextView
+            android:id="@+id/tv_line_chart_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/home_cmri"
+            android:textColor="#ffffff"
+            android:textSize="22.7sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cmr_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:scrollbars="none"/>
+
+        <com.device.limaiyun.thingsboard.utils.SlideBar
+            android:id="@+id/sidrbar"
+            android:layout_width="24dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|right" />
+    </FrameLayout>
+
+</LinearLayout>

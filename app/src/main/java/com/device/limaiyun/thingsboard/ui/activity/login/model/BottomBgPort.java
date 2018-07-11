@@ -1,5 +1,6 @@
 package com.device.limaiyun.thingsboard.ui.activity.login.model;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.PopupWindow;
 
@@ -8,5 +9,5 @@ import android.widget.PopupWindow;
  */
 
 public interface BottomBgPort {
-    void showBottomBg(View view);
+    void showBottomBg(Context mContext, View view);
 }

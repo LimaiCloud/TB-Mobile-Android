@@ -1,11 +1,13 @@
 package com.device.limaiyun.thingsboard.ui.activity.login.presenter;
 
+import android.content.Context;
 import android.view.View;
 import android.widget.PopupWindow;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BasePresenter;
 import com.device.limaiyun.thingsboard.base.Configs;
+import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgModel;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgPort;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.LoginModel;
@@ -42,9 +44,9 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
         mLoginPort.login(username, password, this);
     }
 
-    public void showBottomBg() {
+    public void showBottomBg(Context mContext) {
         View view = mLoginView.showIpPopwindow();
-        mBottomBgPort.showBottomBg(view);
+        mBottomBgPort.showBottomBg(mContext,view);
     }
 
 
@@ -54,7 +56,7 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(TokenBean tokenBean) {
         mLoginView.hinddenLoading();
         mLoginView.showToast("登录成功");
         mLoginView.jumpActivity();
@@ -63,7 +65,9 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
 
     @Override
     public void onError() {
+        mLoginView.hinddenLoading();
         mLoginView.showToast("登录失败");
+        mLoginView.loginError();
     }
 
     @Override
@@ -74,5 +78,14 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     @Override
     public void onDestroy() {
         mLoginView = null;
+    }
+
+    public void autologin(String username, String password,String base_url) {
+        if (username != null && password != null && !username.equals("") && !password.equals("") && base_url.equals("")) {
+            ToastUtils.showShortToast("请添加服务器地址");
+            return;
+        }
+        mLoginView.showLoading();
+        mLoginPort.login(username, password,this);
     }
 }

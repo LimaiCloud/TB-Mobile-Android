@@ -6,5 +6,19 @@ package com.device.limaiyun.thingsboard.base;
 
 public interface BaseView {
 
+    /**
+     *   show message
+     * @param msg
+     */
+    void showToast(String msg);
 
+    /**
+     * show progress dialog
+     */
+    void showLoading();
+
+    /**
+     * progress dialog dimiss
+     */
+    void hinddenLoading();
 }

@@ -1,16 +1,34 @@
 package com.device.limaiyun.thingsboard.ui.activity.home.view;
 
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 
+import com.auth0.android.jwt.Claim;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
+import com.device.limaiyun.thingsboard.bean.DecodeTokenBean;
+import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.fragment.home.AppFragment.view.AppFragment;
 import com.device.limaiyun.thingsboard.ui.fragment.home.CmriFragment.view.CmriFragment;
 import com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.view.HomeFragment;
 import com.device.limaiyun.thingsboard.ui.fragment.home.MyFragment.view.MyFragment;
+import com.device.limaiyun.thingsboard.utils.GlideImageLoader;
+import com.youth.banner.Banner;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,9 +51,20 @@ public class HomeActivity extends BaseActivity implements HomeView {
     private Fragment[] mFragments;
     private int mIndex;
 
+
     @Override
     protected int getLayout() {
         return R.layout.activity_home;
+    }
+
+    @Override
+    public void initView() {
+        Window window = getWindow();
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            ViewGroup contentView = window.getDecorView().findViewById(Window.ID_ANDROID_CONTENT);
+            contentView.getChildAt(0).setFitsSystemWindows(false);
+        }
     }
 
     @Override
@@ -66,6 +95,11 @@ public class HomeActivity extends BaseActivity implements HomeView {
         mIndex = index;
     }
 
+    @Override
+    public void initData() {
+
+    }
+
     @OnClick(R.id.rb_home)
     public void getHomeFragment(){
         setIndexSelector(0);
@@ -85,4 +119,21 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void getMyFragment(){
         setIndexSelector(3);
     }
+
+    @Override
+    public void showToast(String msg) {
+
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hinddenLoading() {
+
+    }
+
+
 }

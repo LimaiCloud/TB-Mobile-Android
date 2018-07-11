@@ -21,21 +21,7 @@ public interface LoginView extends BaseView {
      */
     String getPassword();
 
-    /**
-     *   show message
-     * @param msg
-     */
-    void showToast(String msg);
 
-    /**
-     * show progress dialog
-     */
-    void showLoading();
-
-    /**
-     * progress dialog dimiss
-     */
-    void hinddenLoading();
 
     /**
      * start Activity
@@ -43,6 +29,8 @@ public interface LoginView extends BaseView {
     void jumpActivity();
 
     View showIpPopwindow();
+
+    void loginError();
 
 
 }

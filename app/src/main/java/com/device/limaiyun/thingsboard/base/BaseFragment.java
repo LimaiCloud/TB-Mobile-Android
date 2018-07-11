@@ -4,10 +4,12 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Spinner;
+
+import com.gyf.barlibrary.ImmersionBar;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -21,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
     private View contentView;
     private BaseActivity activity;
     private Unbinder mUnbinder;
+    protected ImmersionBar mImmersionBar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +35,39 @@ public abstract class BaseFragment extends Fragment {
         contentView = inflater.inflate(getFragmentLayout(),container,false);
         mUnbinder = ButterKnife.bind(this,contentView);
         activity = (BaseActivity) getContext();
+        if (isImmersionBarEnabled())
+            initImmersionBar();
         init();
         setUpView();
         setUpData();
         return contentView;
     }
 
-    protected abstract void setUpData();
 
-    protected abstract void setUpView();
+    /**
+     * 初始化沉浸式
+     */
+    protected void initImmersionBar() {
+        mImmersionBar = ImmersionBar.with(this);
+        mImmersionBar.keyboardEnable(true).navigationBarWithKitkatEnable(false).init();
+    }
 
-    protected abstract void init();
+    public abstract void setUpData();
 
-    protected abstract int getFragmentLayout();
+    public abstract void setUpView();
+
+    public abstract void init();
+
+    public abstract int getFragmentLayout();
+
+    /**
+     * 是否在Fragment使用沉浸式
+     *
+     * @return the boolean
+     */
+    protected boolean isImmersionBarEnabled() {
+        return true;
+    }
 
     @Override
     public void onAttach(Context context) {
@@ -80,6 +103,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (mUnbinder != null)mUnbinder.unbind();
+
     }
 
     @Override

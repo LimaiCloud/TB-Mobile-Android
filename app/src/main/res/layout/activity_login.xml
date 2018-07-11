@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"  >
 
 
     <ImageView
@@ -11,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/logo_icon" />
 
     <ProgressBar
         android:visibility="gone"
@@ -88,13 +90,20 @@
             android:layout_marginTop="10dp"
             android:background="@color/login_line_color" />
 
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/auto_login"
+            android:layout_marginLeft="37dp"
+            android:layout_marginTop="5dp"/>
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="275dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:background="@mipmap/login_btn_bg" />
 
         <ImageView
@@ -103,7 +112,7 @@
             android:layout_height="188dp"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="27dp"
             android:src="@mipmap/login_iv_bg" />
     </LinearLayout>
 </RelativeLayout>

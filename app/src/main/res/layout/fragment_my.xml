@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F5F3"
+    android:orientation="vertical">
 
-    <TextView
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="63dp"-->
+    <!--android:background="#3783d2"-->
+    <!--app:contentInsetStart="0dp"-->
+    <!--android:layout_gravity="center">-->
+
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="@string/home_my"-->
+    <!--android:textSize="23sp"-->
+    <!--android:layout_gravity="center_horizontal"-->
+    <!--android:layout_marginTop="18dp"-->
+    <!--android:layout_marginBottom="15dp"-->
+    <!--android:textColor="@android:color/white"/>-->
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/home_my"/>
-</android.support.constraint.ConstraintLayout>
+        android:layout_height="290dp">
+
+        <include
+            layout="@layout/personal_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <RelativeLayout
+            android:layout_width="320dp"
+            android:layout_height="63dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/ll_shape"
+            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/qq_icon"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="54dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/we_chat_icon"
+                android:layout_centerHorizontal="true"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/sign_icon"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="54dp"/>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <include
+        layout="@layout/other_function"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13.8333dp" />
+
+
+</LinearLayout>
