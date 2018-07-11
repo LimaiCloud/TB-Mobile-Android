@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">thingsboard</string>
+    <string name="app_name">力迈云</string>
     <string name="input_username">请输入用户名</string>
     <string name="input_paw">请输入密码</string>
     <string name="login_btn">登录</string>
@@ -24,5 +24,37 @@
     <string name="os_mes">MES</string>
     <string name="easy_product">生产执行更便捷</string>
     <string name="os_plm">PLM</string>
-    <string name="process_control">流程控制更安全！</string>>
+    <string name="process_control">流程控制更安全！</string>
+    <string name="equipment_monitoring">设备监控</string>
+    <string name="back">返回</string>
+    <string name="inject_title">立体注塑机</string>
+    <string name="tenant">租户ID：</string>
+    <string name="tenant_id">XXXXXXXXXXXXX</string>
+    <string name="inject_machine">注塑机</string>
+    <string name="company_name">北京例迈金城科技有限公司</string>
+    <string name="user_mail">xudong_liu@139.com</string>
+    <string name="collect">收藏</string>
+    <string name="remind">提醒</string>
+    <string name="red_packet">红包</string>
+    <string name="setting_up">设置</string>
+    <string name="dashboards">奇跃仪表盘</string>
+    <string name="admin">管理员</string>
+    <string name="eqipment_detil">数据详情</string>
+    <string name="data_empty">暂无数据</string>
+    <string name="tv_title">类型</string>
+    <string name="time">2017-06-06</string>
+    <string name="count">1000000</string>
+    <string name="line_chart">面板详情</string>
+    <string name="version">版本</string>
+    <string name="plugin">插件</string>
+    <string name="exit_app">退出登录</string>
+    <string name="auto_login">自动登录</string>
+    <string name="AR">AR工厂</string>
+    <string name="intelligent_identification">智能识别</string>
+    <string name="DM">数据挖掘</string>
+    <string name="BD">智能分析</string>
+    <string name="inject_alarm">立体注塑机报警</string>
+    <string name="alarm_detil">立体注塑机于20时39分因为机器电流不稳定造成了机器故障</string>
+    <string name="flow_path_alarm">流程警报</string>
+    <string name="alarm_message">警报信息</string>>
 </resources>

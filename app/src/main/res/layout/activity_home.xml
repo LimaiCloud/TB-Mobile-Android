@@ -2,13 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+
 
     <FrameLayout
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"/>
+
+
+
+
 
     <View
         android:layout_width="match_parent"
@@ -30,19 +37,20 @@
             android:checked="true"
             android:drawableTop="@drawable/home_selec"
             android:gravity="center"
-            android:text="@string/home_message" />
+            android:text="@string/home_message"
+            android:textColor="@color/text_selector" />
 
         <RadioButton
             android:id="@+id/rb_cmr"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-
             android:layout_marginTop="8dp"
             android:layout_weight="1"
             android:button="@null"
             android:drawableTop="@drawable/cmr_selector"
             android:gravity="center"
-            android:text="@string/home_cmri" />
+            android:text="@string/home_cmri"
+            android:textColor="@color/text_selector" />
 
         <RadioButton
             android:id="@+id/rb_app"
@@ -53,7 +61,8 @@
             android:button="@null"
             android:drawableTop="@drawable/app_selector"
             android:gravity="center"
-            android:text="@string/home_app" />
+            android:text="@string/home_app"
+            android:textColor="@color/text_selector" />
 
         <RadioButton
             android:id="@+id/rb_my"
@@ -64,7 +73,8 @@
             android:button="@null"
             android:drawableTop="@drawable/my_selector"
             android:gravity="center"
-            android:text="@string/home_my" />
+            android:text="@string/home_my"
+            android:textColor="@color/text_selector" />
 
     </RadioGroup>
 </LinearLayout>
