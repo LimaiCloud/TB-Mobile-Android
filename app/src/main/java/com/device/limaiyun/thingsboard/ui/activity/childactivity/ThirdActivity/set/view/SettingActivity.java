@@ -3,6 +3,7 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -24,6 +25,8 @@ public class SettingActivity extends BaseActivity implements SettingView {
     private SettingPresenter presenter;
     @BindView(R.id.ll_back)
     LinearLayout ll_back;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected int getLayout() {
@@ -49,7 +52,7 @@ public class SettingActivity extends BaseActivity implements SettingView {
     @Override
     public void initImmersionBar() {
         super.initImmersionBar();
-        mImmersionBar.transparentBar().statusBarDarkFont(true).init();
+        mImmersionBar.titleBar(R.id.toolbar).init();
     }
 
     @Override

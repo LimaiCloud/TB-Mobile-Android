@@ -73,6 +73,7 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     @Override
     public void onUnaOrPwdEmpty() {
         mLoginView.showToast("用户名或密码为空");
+        mLoginView.hinddenLoading();
     }
 
     @Override

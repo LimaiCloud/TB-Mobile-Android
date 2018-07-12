@@ -30,7 +30,10 @@ public class LoginModel implements LoginPort {
             return;
         }
         if (username != null && password != null && !username.equals("") && !password.equals("")) {
-            if (!username.contains("@limaicloud.com")) {
+
+            if (username.contains("@")){
+                username = username;
+            }else {
                 username = username + "@limaicloud.com";
             }
             String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";

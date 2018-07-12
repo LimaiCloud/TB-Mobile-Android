@@ -14,7 +14,7 @@ public class TimeUtils {
     */
     public static String stampToDate(String s){
         String res;
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd HH:mm:ss");
         long lt = new Long(s);
         Date date = new Date(lt);
         res = simpleDateFormat.format(date);

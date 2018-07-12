@@ -122,6 +122,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @OnClick(R.id.rl_equipment_msg)
     public void showEqipmentMsg(){
         Intent intent = new Intent(getContext(),EquipmentActivity.class);
+
         startActivity(intent);
     }
 
