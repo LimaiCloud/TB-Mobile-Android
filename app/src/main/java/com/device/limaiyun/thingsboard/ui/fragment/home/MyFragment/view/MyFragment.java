@@ -3,9 +3,12 @@ package com.device.limaiyun.thingsboard.ui.fragment.home.MyFragment.view;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.auth0.android.jwt.JWT;
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseFragment;
+import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.set.view.SettingActivity;
 
 import butterknife.BindView;
@@ -22,6 +25,9 @@ public class MyFragment extends BaseFragment {
     @BindView(R.id.rl_edit)
     RelativeLayout rl_edit;
     private Context mContext;
+    @BindView(R.id.tv_email)
+    TextView textEmail;
+    private String subject;
 
     @Override
     public void setUpData() {
@@ -31,11 +37,15 @@ public class MyFragment extends BaseFragment {
     @Override
     public void setUpView() {
         mContext = getContext();
+        if (subject != null && !subject.equals("")){
+            textEmail.setText(subject);
+        }
     }
 
     @Override
     public void init() {
-
+        JWT jwt = new JWT(TokenBean.TOKEN);
+        subject = jwt.getSubject();
     }
 
     @Override

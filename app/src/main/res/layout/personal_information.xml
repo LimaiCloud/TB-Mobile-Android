@@ -13,10 +13,10 @@
         <ImageView
             android:layout_width="26dp"
             android:layout_height="26dp"
-            android:src="@mipmap/edit_icon"
             android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
             android:layout_marginTop="23dp"
-            android:layout_marginRight="15dp"/>
+            android:src="@mipmap/edit_icon" />
     </RelativeLayout>
 
 
@@ -27,16 +27,16 @@
         android:layout_marginLeft="20dp"
         android:orientation="horizontal">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@mipmap/head_protrait"
-            />
+        <com.zuowei.circleimageview.CircleImageView
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:scaleType="matrix"
+            android:src="@mipmap/head_protrait"/>
 
         <RelativeLayout
-            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:background="@drawable/rl_shape">
 
             <TextView
@@ -63,6 +63,7 @@
 
 
     <TextView
+        android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

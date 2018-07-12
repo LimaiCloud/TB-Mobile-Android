@@ -30,9 +30,9 @@ public class LoginModel implements LoginPort {
             return;
         }
         if (username != null && password != null && !username.equals("") && !password.equals("")) {
-//            if (!username.contains("@limaicloud.com")) {
-//                username = username + "@limaicloud.com";
-//            }
+            if (!username.contains("@limaicloud.com")) {
+                username = username + "@limaicloud.com";
+            }
             String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";
             OkGo.post(Configs.BASE_URL + API_AUTH_LOGIN)
                     .headers("Content-Type", "application/json")
@@ -68,13 +68,11 @@ public class LoginModel implements LoginPort {
 
                         @Override
                         public void onCacheSuccess(com.lzy.okgo.model.Response<Object> response) {
-                            Log.e("response", "3:" + response.toString());
                         }
 
                         @Override
                         public void onError(com.lzy.okgo.model.Response<Object> response) {
-                            Log.e("response", "3:" + response.toString());
-
+                            onLoginListener.onError();
                         }
 
                         @Override
