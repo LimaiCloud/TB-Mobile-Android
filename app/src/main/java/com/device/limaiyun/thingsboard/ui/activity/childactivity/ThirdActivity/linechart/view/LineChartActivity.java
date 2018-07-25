@@ -117,6 +117,15 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
                 loginWebView(view, username, password);//模拟webview登录
             }
 
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                if (Build.VERSION.SDK_INT <26){
+                    view.loadUrl(Constant.API_SERVE_URL);
+                    return true;
+                }
+                return false;
+            }
+
             @Nullable
             @Override
             public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
