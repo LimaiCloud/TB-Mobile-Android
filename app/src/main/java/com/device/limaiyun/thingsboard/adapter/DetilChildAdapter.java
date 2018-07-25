@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.device.limaiyun.thingsboard.R;
-import com.device.limaiyun.thingsboard.bean.EquipmentDetialBean;
 import com.device.limaiyun.thingsboard.utils.TimeUtils;
 
 import java.util.Iterator;
@@ -42,7 +41,7 @@ public class DetilChildAdapter extends RecyclerView.Adapter<DetilChildAdapter.Vi
             while (iterator.hasNext()) {
                 Long aLong = iterator.next();
                 String count = map.get(aLong);
-                String time = TimeUtils.stampToDate(String.valueOf(aLong));
+                String time = TimeUtils.stampToTime(String.valueOf(aLong));
                 holder.tv_time.setText(time);
                 holder.tv_count.setText(count);
             }

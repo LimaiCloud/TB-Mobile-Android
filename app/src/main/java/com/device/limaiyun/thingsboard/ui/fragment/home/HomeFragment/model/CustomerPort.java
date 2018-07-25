@@ -6,4 +6,6 @@ package com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.model;
 
 public interface CustomerPort {
     void getCustomer();
+
+    void getTitle(OnWantedListener listener);
 }

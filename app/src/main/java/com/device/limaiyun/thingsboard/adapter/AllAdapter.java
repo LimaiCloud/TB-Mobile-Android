@@ -1,14 +1,15 @@
 package com.device.limaiyun.thingsboard.adapter;
 
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.auth0.android.jwt.JWT;
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.bean.DeviceTypeBean;
+import com.device.limaiyun.thingsboard.bean.TokenBean;
 
 import java.util.List;
 
@@ -21,7 +22,6 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllAdapterViewHo
 
     private List<DeviceTypeBean.DataBean> list;
     private OnItemClickListener listener;
-
 
 
     public AllAdapter(List<DeviceTypeBean.DataBean> data) {
@@ -40,7 +40,10 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllAdapterViewHo
     public void onBindViewHolder(AllAdapter.AllAdapterViewHolder holder, final int position) {
         holder.tv_title.setText(list.get(position).getName());
         holder.tv_device_type.setText(list.get(position).getType());
-        if (listener != null){
+        JWT jwt = new JWT(TokenBean.TOKEN);
+        String customerId = jwt.getClaim("customerId").asString();
+        holder.tv_teanant_id.setText(customerId);
+        if (listener != null) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -55,6 +58,7 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllAdapterViewHo
                 }
             });
         }
+
     }
 
     @Override
@@ -75,8 +79,9 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllAdapterViewHo
         }
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void setOnClickListener(int position);
+
         void setOnLongClickListener(int position);
     }
 

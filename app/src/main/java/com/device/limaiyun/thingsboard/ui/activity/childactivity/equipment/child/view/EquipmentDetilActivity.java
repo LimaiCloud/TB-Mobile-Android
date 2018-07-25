@@ -3,36 +3,19 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.chil
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.adapter.DetilAdapter;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.EquipmentDetialBean;
-import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.child.presenter.EqipDetiPresenter;
 import com.device.limaiyun.thingsboard.utils.SpacesItemDecoration;
-import com.device.limaiyun.thingsboard.utils.ToastUtils;
-import com.google.gson.Gson;
-
-import org.java_websocket.WebSocket;
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.drafts.Draft_10;
-import org.java_websocket.drafts.Draft_17;
-import org.java_websocket.handshake.ServerHandshake;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,6 +36,8 @@ public class EquipmentDetilActivity extends BaseActivity implements EqipmentDeti
     LinearLayout ll_back;
     @BindView(R.id.detil_recyclerView)
     RecyclerView recyclerview;
+//    @BindView(R.id.progressbar)
+//    ProgressBar progressBar;
     private DetilAdapter adapter;
     private Context mContext;
 
@@ -124,4 +109,19 @@ public class EquipmentDetilActivity extends BaseActivity implements EqipmentDeti
     public void finishAct() {
         finish();
     }
+
+//    @Override
+//    public void showToast(String msg) {
+//        ToastUtils.showLongToast(msg);
+//    }
+//
+//    @Override
+//    public void showLoading() {
+////        progressBar.setVisibility(View.VISIBLE);
+//    }
+//
+//    @Override
+//    public void hinddenLoading() {
+////        progressBar.setVisibility(View.GONE);
+//    }
 }

@@ -2,13 +2,10 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.chil
 
 import android.util.Log;
 
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.EquipmentDetialBean;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.utils.ToastUtils;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.drafts.Draft_17;
@@ -42,7 +39,7 @@ public class EqipDetiModel implements EqipDetiPort {
         Log.e("---------", entityId);
 //        client.send("\"enttyId\":"+"\""+entityId+"\"");
         try {
-            client = new WebSocketClient(new URI(Configs.WS_URL + TokenBean.TOKEN), draft_17) {
+            client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.TOKEN), draft_17) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
 //                    String sent = "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":"+"\""+entityId+"\"" +",\"scope\":\"LATEST_TELEMETRY\",\"cmdId\":2}],\"historyCmds\":[],\"attrSubCmds\":[]}";

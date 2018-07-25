@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="271dp"
+    android:background="@mipmap/my_bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="23dp"
+            android:src="@mipmap/edit_icon" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal">
+
+        <com.zuowei.circleimageview.CircleImageView
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:scaleType="matrix"
+            android:src="@mipmap/head_protrait"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/rl_shape">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="@string/admin"
+                android:textColor="@android:color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/company_name"
+        android:textColor="#ffffff"
+        android:textSize="18.3sp" />
+
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="3dp"
+        android:text="@string/user_mail"
+        android:textColor="#ffffff"
+        android:textSize="16.3sp" />
+
+
+</LinearLayout>

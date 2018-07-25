@@ -1,4 +1,8 @@
 <resources>
+
+    <string name="username">qiyue</string>
+    <string name="password">123456</string>
+
     <string name="app_name">力迈云</string>
     <string name="input_username">请输入用户名</string>
     <string name="input_paw">请输入密码</string>
@@ -31,7 +35,7 @@
     <string name="tenant">租户ID：</string>
     <string name="tenant_id">XXXXXXXXXXXXX</string>
     <string name="inject_machine">注塑机</string>
-    <string name="company_name">北京例迈金城科技有限公司</string>
+    <string name="company_name">北京力迈金诚科技有限公司</string>
     <string name="user_mail">xudong_liu@139.com</string>
     <string name="collect">收藏</string>
     <string name="remind">提醒</string>
@@ -56,5 +60,7 @@
     <string name="inject_alarm">立体注塑机报警</string>
     <string name="alarm_detil">立体注塑机于20时39分因为机器电流不稳定造成了机器故障</string>
     <string name="flow_path_alarm">流程警报</string>
-    <string name="alarm_message">警报信息</string>>
+    <string name="alarm_message">警报信息</string>
+    <string name="wanted">公告信息</string>
+
 </resources>

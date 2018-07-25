@@ -2,9 +2,8 @@ package com.device.limaiyun.thingsboard.ui.activity.login.model;
 
 import android.util.Log;
 
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
-import com.device.limaiyun.thingsboard.ui.activity.login.presenter.LoginPresenter;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Progress;
@@ -15,8 +14,6 @@ import java.io.IOException;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
 import okio.BufferedSource;
-
-import static com.device.limaiyun.thingsboard.base.Configs.API_AUTH_LOGIN;
 
 /**
  * Created by Administrator on 2018/4/11 0011.
@@ -30,11 +27,14 @@ public class LoginModel implements LoginPort {
             return;
         }
         if (username != null && password != null && !username.equals("") && !password.equals("")) {
-//            if (!username.contains("@limaicloud.com")) {
-//                username = username + "@limaicloud.com";
-//            }
+
+            if (username.contains("@")) {
+                username = username;
+            } else {
+                username = username + "@limaicloud.com";
+            }
             String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";
-            OkGo.post(Configs.BASE_URL + API_AUTH_LOGIN)
+            OkGo.post(Constant.API_SERVE_URL + Constant.API_AUTH_LOGIN)
                     .headers("Content-Type", "application/json")
                     .headers("Accept", "application/json")
                     .upJson(parmer1)
@@ -68,13 +68,11 @@ public class LoginModel implements LoginPort {
 
                         @Override
                         public void onCacheSuccess(com.lzy.okgo.model.Response<Object> response) {
-                            Log.e("response", "3:" + response.toString());
                         }
 
                         @Override
                         public void onError(com.lzy.okgo.model.Response<Object> response) {
-                            Log.e("response", "3:" + response.toString());
-
+                            onLoginListener.onError();
                         }
 
                         @Override

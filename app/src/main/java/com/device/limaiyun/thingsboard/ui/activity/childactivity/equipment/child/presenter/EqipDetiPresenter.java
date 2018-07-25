@@ -20,16 +20,20 @@ public class EqipDetiPresenter implements EquipDetilListener{
     }
 
     public void getNewDetial(String id) {
+//        view.showLoading();
         port.getNewDetial(id,this);
     }
 
     @Override
     public void getNewDetilOnSuc(EquipmentDetialBean bean) {
+//        view.hinddenLoading();
+//        view.showToast("获取成功");
         view.getNewDetilMessageSuc(bean);
     }
 
     @Override
     public void getNewDetilOnFail() {
-
+//        view.hinddenLoading();
+//        view.showToast("获取失败");
     }
 }

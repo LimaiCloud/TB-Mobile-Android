@@ -1,7 +1,6 @@
 package com.device.limaiyun.thingsboard.ui.activity.login.view;
 
 import android.view.View;
-import android.widget.PopupWindow;
 
 import com.device.limaiyun.thingsboard.base.BaseView;
 
@@ -32,5 +31,6 @@ public interface LoginView extends BaseView {
 
     void loginError();
 
+    void loginSuc();
 
 }

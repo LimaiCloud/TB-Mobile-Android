@@ -5,5 +5,7 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.
  */
 
 public interface LineChartPort {
-    void getDashBoardDetil(String entityId,LineChartListener chartListener);
+    void getDashBoardDetil(String entityId,String lTime,LineChartListener chartListener);
+
+    void getTime(LineChartListener chartListener);
 }

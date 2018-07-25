@@ -4,16 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupWindow;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.Configs;
-
-import butterknife.OnClick;
 
 
 /**
@@ -34,7 +30,7 @@ public class BottomBgModel implements BottomBgPort {
             dialog = builder.show();
             SharedPreferences sp = mContext.getSharedPreferences("login", Context.MODE_PRIVATE);
             String url = sp.getString("url", "");
-            if (url!=null){
+            if (url != null) {
                 editText.setText(url);
                 Configs.BASE_URL = url;
             }
@@ -51,16 +47,28 @@ public class BottomBgModel implements BottomBgPort {
                 public void onClick(View view) {
                     dialog.dismiss();
                     String ip = editText.getText().toString();
-                    if (ip != null && !ip.equals("") && !ip.contains("http://")) {
-                        Configs.BASE_URL = "http://" + ip;
-                    } else if (ip != null && !ip.equals("") && ip.contains("http://")) {
-                        Configs.BASE_URL = ip;
+                    if (ip != null && !ip.equals("")) {
+                        if (!ip.contains("http://")) {
+                            Configs.BASE_URL = "http://" + ip;
+
+                        } else if (ip.contains("http://")) {
+                            Configs.BASE_URL = ip;
+                        }
                     }
-                    SharedPreferences sp = mContext.getSharedPreferences("login", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("url",Configs.BASE_URL).commit();
+
+//                    editText.setText("http//:thingsdevice.limaicloud.com");
+//                    SharedPreferences sp = mContext.getSharedPreferences("login", Context.MODE_PRIVATE);
+//                    SharedPreferences.Editor edit = sp.edit();
+//                    edit.putString("url",Configs.BASE_URL).commit();
+//                    edit.putString("url","http//:thingsdevice.limaicloud.com").commit();
                 }
             });
+//            editText.setText("http//:thingsdevice.limaicloud.com");
+//            Configs.BASE_URL = "http//:thingsdevice.limaicloud.com";
+//            SharedPreferences sp = mContext.getSharedPreferences("login", Context.MODE_PRIVATE);
+//            SharedPreferences.Editor edit = sp.edit();
+////                    edit.putString("url",Configs.BASE_URL).commit();
+//            edit.putString("url","http//:thingsdevice.limaicloud.com").commit();
         }
     }
 }

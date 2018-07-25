@@ -24,14 +24,14 @@ public class LineChartPresenter extends BasePresenter implements LineChartListen
     }
 
 
-    public void getDashBoardDetil(String entityId) {
-        port.getDashBoardDetil(entityId,this);
+    public void getDashBoardDetil(String entityId,String lTime) {
+        port.getDashBoardDetil(entityId,lTime,this);
     }
 
 
     @Override
-    public void getEtcSuc(List<String> title, List<List<Map<Long, String>>> listList) {
-        view.showEtcLinChart(title,listList);
+    public void getEtcSuc(List<String> title,List<List<Map<Long, String>>> data) {
+        view.showEtcLinChart(title,data);
     }
 
     @Override
@@ -42,5 +42,14 @@ public class LineChartPresenter extends BasePresenter implements LineChartListen
     @Override
     public void getDashBoardDetilFail() {
         view.showEmpty();
+    }
+
+    @Override
+    public void getTime(String lTime) {
+        view.getTimeSuc(lTime);
+    }
+
+    public void getTime() {
+        port.getTime(this);
     }
 }

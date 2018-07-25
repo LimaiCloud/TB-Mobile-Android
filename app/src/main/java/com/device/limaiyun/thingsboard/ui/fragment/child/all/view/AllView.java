@@ -11,4 +11,5 @@ import java.util.List;
 
 public interface AllView extends BaseView {
     void showItemData(DeviceTypeBean bean);
+    void refreshToken();
 }

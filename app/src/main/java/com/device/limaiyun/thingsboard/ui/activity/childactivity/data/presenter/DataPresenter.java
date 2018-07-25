@@ -1,5 +1,7 @@
 package com.device.limaiyun.thingsboard.ui.activity.childactivity.data.presenter;
 
+import android.content.Context;
+
 import com.device.limaiyun.thingsboard.base.BasePresenter;
 import com.device.limaiyun.thingsboard.bean.DashBoardsBean;
 import com.device.limaiyun.thingsboard.bean.DeviceTypeBean;
@@ -22,8 +24,8 @@ public class DataPresenter extends BasePresenter implements DashboardsListener {
 
     }
 
-    public void getDataDashBoards( String scopes,String customerId) {
-        port.getDashBoards(scopes,customerId,this);
+    public void getDataDashBoards(Context mContext, String scopes, String customerId) {
+        port.getDashBoards(mContext,scopes,customerId,this);
     }
 
 

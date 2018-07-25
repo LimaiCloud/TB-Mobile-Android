@@ -3,6 +3,7 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.widget.Toolbar;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -24,6 +25,8 @@ public class SettingActivity extends BaseActivity implements SettingView {
     private SettingPresenter presenter;
     @BindView(R.id.ll_back)
     LinearLayout ll_back;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected int getLayout() {
@@ -49,7 +52,7 @@ public class SettingActivity extends BaseActivity implements SettingView {
     @Override
     public void initImmersionBar() {
         super.initImmersionBar();
-        mImmersionBar.transparentBar().statusBarDarkFont(true).init();
+        mImmersionBar.titleBar(R.id.toolbar).init();
     }
 
     @Override
@@ -70,18 +73,18 @@ public class SettingActivity extends BaseActivity implements SettingView {
 //        edit.putBoolean("checkbox", false);
 //        edit.commit();
         SharedPreferences account = getSharedPreferences("account", MODE_PRIVATE);
-        SharedPreferences login_url = getSharedPreferences("login", MODE_PRIVATE);
+//        SharedPreferences login_url = getSharedPreferences("login", MODE_PRIVATE);
 //        username = account.getString("username", "");
 //        password = account.getString("password", "");
 //        cb_boolean = account.getBoolean("checkbox", false);
 //        SharedPreferences url = getSharedPreferences("url", MODE_PRIVATE);
 //        base_url = url.getString("url", "");
         SharedPreferences.Editor edit = account.edit();
-        SharedPreferences.Editor edit_url = login_url.edit();
+//        SharedPreferences.Editor edit_url = login_url.edit();
         edit.putString("username", null);
         edit.putString("password", null);
         edit.putBoolean("checkbox", false);
-        edit_url.putString("url", null).commit();
+//        edit_url.putString("url", null).commit();
         edit.commit();
         Intent intent = new Intent(this, LoginActivity.class);
         intent.putExtra("exit_app", true);

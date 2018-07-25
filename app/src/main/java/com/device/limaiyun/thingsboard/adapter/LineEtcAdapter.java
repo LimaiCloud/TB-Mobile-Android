@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.device.limaiyun.thingsboard.R;
+import com.device.limaiyun.thingsboard.utils.MyMarkerView;
 import com.device.limaiyun.thingsboard.utils.TimeUtils;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -27,7 +28,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by Administrator on 2018/7/4 0004.
@@ -39,10 +39,10 @@ public class LineEtcAdapter extends BaseAdapter {
     private List<List<Map<Long, String>>> mList;
     private LayoutInflater mLayoutInflater;
 
-    public LineEtcAdapter(Context mContext, List<String> title, List<List<Map<Long, String>>> list) {
+    public LineEtcAdapter(Context mContext,  List<String> title,List<List<Map<Long, String>>> data) {
         mmContext = mContext;
-        this.mTitle = title;
-        this.mList = list;
+        this.mList= data;
+        mTitle = title;
         mLayoutInflater = LayoutInflater.from(mmContext);
     }
 
@@ -78,6 +78,7 @@ public class LineEtcAdapter extends BaseAdapter {
         Description description = new Description();
         description.setText("");
         holder.line_chart.setDescription(description);
+        holder.line_chart.setMarker(new MyMarkerView(mmContext,R.layout.markview));
 
         //矩形背景框设置
         holder.line_chart.setDrawGridBackground(true);
@@ -90,6 +91,7 @@ public class LineEtcAdapter extends BaseAdapter {
         ArrayList<String> xValues = new ArrayList<>();//x轴数据
         ArrayList<Entry> yValues = new ArrayList<>();//y轴数据
         ArrayList<String> data_list = new ArrayList<>();
+
         for (int i = 0; i < mList.get(position).size(); i++) {
             Map<Long, String> map = mList.get(position).get(i);
             Iterator<Long> iterator = map.keySet().iterator();
@@ -101,58 +103,58 @@ public class LineEtcAdapter extends BaseAdapter {
                 data_list.add(value);
             }
         }
-        if (xValues.size() > 0) {
-            Collections.reverse(xValues);
-        }
-        if (data_list.size() > 0) {
-            Collections.reverse(data_list);
-        }
-        for (int i = 0; i < data_list.size(); i++) {
-            String s = data_list.get(i);
-            float aFloat = Float.parseFloat(s);
-            yValues.add(new Entry(i, aFloat));
-        }
-
-        MyXFormatter formatter = new MyXFormatter(xValues);
-        LineDataSet dataSet = new LineDataSet(yValues, mTitle.get(position));
-        dataSet.setColor(Color.GRAY);
-        dataSet.setLineWidth(2.0f);
-//        dataSet.setDrawCircleHole(true);
-//        dataSet.setCircleRadius(8.0f);
-        dataSet.setValueFormatter(new IValueFormatter() {
-            @Override
-            public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
-                return value +"";
+            if (xValues.size() > 0) {
+                Collections.reverse(xValues);
             }
-        });
-        LineData lineData = new LineData(dataSet);
-        holder.line_chart.setData(lineData);
-        lineData.setValueTextSize(12.0f);
+            if (data_list.size() > 0) {
+                Collections.reverse(data_list);
+            }
 
-        //获取X轴
-        XAxis xAxis = holder.line_chart.getXAxis();
-        YAxis yAxis = holder.line_chart.getAxisLeft();
-        holder.line_chart.getAxisRight().setEnabled(false);
-        xAxis.setEnabled(true);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGridColor(Color.RED);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawAxisLine(true);
-        xAxis.setAxisLineColor(Color.GRAY);
-        xAxis.setAxisLineWidth(1.5f);
-        xAxis.setGridColor(Color.GRAY);
-        xAxis.setValueFormatter(formatter);
-        xAxis.setGridLineWidth(1.0f);
+            for (int i = 0; i < data_list.size(); i++) {
+                String s = data_list.get(i);
+                float aFloat = Float.parseFloat(s);
+                yValues.add(new Entry(i, aFloat));
+            }
 
-        //设置Y轴
-        yAxis.setDrawAxisLine(true);
-        yAxis.setEnabled(true);
-        yAxis.setDrawGridLines(true);
-        yAxis.setGridColor(Color.GRAY);
-        yAxis.setGridLineWidth(1.0f);
-        yAxis.setAxisLineColor(Color.BLACK);
-        yAxis.setAxisMaximum(10);
-        yAxis.setAxisMinimum(0);
+
+            MyXFormatter formatter = new MyXFormatter(xValues);
+            LineDataSet dataSet = new LineDataSet(yValues, mTitle.get(position));
+            dataSet.setColor(Color.GRAY);
+            dataSet.setLineWidth(2.0f);
+            dataSet.setValueFormatter(new IValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                    return value +"";
+                }
+            });
+            LineData lineData = new LineData(dataSet);
+            holder.line_chart.setData(lineData);
+            lineData.setValueTextSize(12.0f);
+
+            //获取X轴
+            XAxis xAxis = holder.line_chart.getXAxis();
+            YAxis yAxis = holder.line_chart.getAxisLeft();
+            holder.line_chart.getAxisRight().setEnabled(false);
+            xAxis.setEnabled(true);
+            xAxis.setDrawGridLines(false);
+            xAxis.setGridColor(Color.RED);
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setDrawAxisLine(true);
+            xAxis.setAxisLineColor(Color.GRAY);
+            xAxis.setAxisLineWidth(1.5f);
+            xAxis.setGridColor(Color.GRAY);
+            xAxis.setValueFormatter(formatter);
+            xAxis.setGridLineWidth(1.0f);
+
+            //设置Y轴
+            yAxis.setDrawAxisLine(true);
+            yAxis.setEnabled(true);
+            yAxis.setDrawGridLines(true);
+            yAxis.setGridColor(Color.GRAY);
+            yAxis.setGridLineWidth(1.0f);
+            yAxis.setAxisLineColor(Color.BLACK);
+            yAxis.setAxisMaximum(500);
+            yAxis.setAxisMinimum(0);
 
         return contentView;
     }

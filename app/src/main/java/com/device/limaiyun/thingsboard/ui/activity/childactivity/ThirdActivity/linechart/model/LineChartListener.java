@@ -9,7 +9,8 @@ import java.util.Map;
 
 public interface LineChartListener {
 
-    void getEtcSuc(List<String> title,List<List<Map<Long,String>>> listList);
+    void getEtcSuc(List<String> titl,List<List<Map<Long, String>>> data);
     void getCountSuc(List<String> title,List<List<Map<Long,String>>> listList);
     void getDashBoardDetilFail();
+    void getTime(String lTime);
 }

@@ -2,11 +2,8 @@ package com.device.limaiyun.thingsboard.ui.activity.login.presenter;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.PopupWindow;
 
-import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BasePresenter;
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgModel;
 import com.device.limaiyun.thingsboard.ui.activity.login.model.BottomBgPort;
@@ -36,12 +33,12 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     public void login() {
         String username = mLoginView.getUsername();
         String password = mLoginView.getPassword();
-        if (username != null && password != null && !username.equals("") && !password.equals("") && Configs.BASE_URL.equals("")) {
-            ToastUtils.showShortToast("请添加服务器地址");
-            return;
-        }
+//        if (username != null && password != null && !username.equals("") && !password.equals("") && Configs.BASE_URL.equals("")) {
+//            ToastUtils.showShortToast("请添加服务器地址");
+//            return;
+//        }
         mLoginView.showLoading();
-        mLoginPort.login(username, password, this);
+        mLoginPort.login(username, password,this);
     }
 
     public void showBottomBg(Context mContext) {
@@ -59,8 +56,8 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     public void onSuccess(TokenBean tokenBean) {
         mLoginView.hinddenLoading();
         mLoginView.showToast("登录成功");
+        mLoginView.loginSuc();
         mLoginView.jumpActivity();
-
     }
 
     @Override
@@ -73,6 +70,7 @@ public class LoginPresenter extends BasePresenter implements OnLoginListener {
     @Override
     public void onUnaOrPwdEmpty() {
         mLoginView.showToast("用户名或密码为空");
+        mLoginView.hinddenLoading();
     }
 
     @Override
