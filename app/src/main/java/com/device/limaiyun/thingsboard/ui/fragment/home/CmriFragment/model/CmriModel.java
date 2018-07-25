@@ -1,12 +1,10 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.CmriFragment.model;
 
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.UsersBean;
 import com.device.limaiyun.thingsboard.utils.ToastUtils;
-import com.google.gson.Gson;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.Callback;
 import com.lzy.okgo.model.Progress;
@@ -35,7 +33,7 @@ public class CmriModel implements CmriPort {
             ToastUtils.showShortToast("无法获取用户信息");
             return;
         }
-        OkGo.get(Configs.USERS + token)
+        OkGo.get(Constant.API_USERS + token)
                 .tag(this)
                 .execute(new Callback<Object>() {
                     @Override

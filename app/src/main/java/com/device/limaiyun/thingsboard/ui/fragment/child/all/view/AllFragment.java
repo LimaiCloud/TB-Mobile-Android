@@ -6,19 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.adapter.AllAdapter;
 import com.device.limaiyun.thingsboard.base.BaseFragment;
 import com.device.limaiyun.thingsboard.bean.DeviceTypeBean;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.child.view.EquipmentDetilActivity;
-import com.device.limaiyun.thingsboard.ui.fragment.child.all.model.AllModel;
 import com.device.limaiyun.thingsboard.ui.fragment.child.all.presenter.AllPresenter;
-import com.device.limaiyun.thingsboard.utils.ToastUtils;
-
-import java.util.List;
 
 import butterknife.BindView;
 
@@ -32,6 +28,8 @@ public class AllFragment extends BaseFragment implements AllView {
     private AllAdapter adapter;
     private AllPresenter mAllPresenter;
     private Context mContext;
+    @BindView(R.id.progressbar)
+    ProgressBar progressbar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +39,7 @@ public class AllFragment extends BaseFragment implements AllView {
 
     @Override
     public void setUpData() {
-        mAllPresenter.getDeviceType();
+        mAllPresenter.getDeviceType(mContext);
     }
 
     @Override
@@ -67,12 +65,12 @@ public class AllFragment extends BaseFragment implements AllView {
 
     @Override
     public void showLoading() {
-
+        progressbar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hinddenLoading() {
-
+        progressbar.setVisibility(View.GONE);
     }
 
     @Override
@@ -93,6 +91,11 @@ public class AllFragment extends BaseFragment implements AllView {
             public void setOnLongClickListener(int position) {
             }
         });
+    }
+
+    @Override
+    public void refreshToken() {
+
     }
 
 

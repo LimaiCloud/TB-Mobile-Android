@@ -5,25 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.webkit.WebView;
 import android.widget.LinearLayout;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
-import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.adapter.DashBoardsAdapter;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
-import com.device.limaiyun.thingsboard.bean.DashBoardsBean;
 import com.device.limaiyun.thingsboard.bean.DeviceTypeBean;
-import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.linechart.view.LineChartActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.data.presenter.DataPresenter;
 import com.device.limaiyun.thingsboard.utils.ToastUtils;
-
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -51,8 +41,8 @@ public class DataActivity extends BaseActivity implements DataView {
 
     @Override
     public void initView() {
-        presenter = new DataPresenter(this);
         mContext = this;
+        presenter = new DataPresenter(this);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         scopes = extras.getString("scopes");
@@ -61,7 +51,7 @@ public class DataActivity extends BaseActivity implements DataView {
 
     @Override
     public void initData() {
-        presenter.getDataDashBoards(scopes,customerId);
+        presenter.getDataDashBoards(mContext,scopes,customerId);
     }
 
     @Override

@@ -12,9 +12,11 @@ import java.util.Map;
 public interface LineChartView extends BaseView {
 
 
-    void showEtcLinChart(List<String> title, List<List<Map<Long, String>>> list);
+    void showEtcLinChart(List<String> title,List<List<Map<Long, String>>> data);
 
     void showCountLinChart(List<String> title, List<List<Map<Long, String>>> list);
 
     void showEmpty();
+
+    void getTimeSuc(String lTime);
 }

@@ -3,8 +3,6 @@ package com.device.limaiyun.thingsboard.ui.activity.login.view;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -15,14 +13,12 @@ import android.widget.ProgressBar;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
-import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.ui.activity.home.view.HomeActivity;
 import com.device.limaiyun.thingsboard.ui.activity.login.presenter.LoginPresenter;
 import com.device.limaiyun.thingsboard.utils.ToastUtils;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity implements LoginView {
@@ -59,8 +55,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
         username = account.getString("username", "");
         password = account.getString("password", "");
         cb_boolean = account.getBoolean("checkbox", false);
-        SharedPreferences url = getSharedPreferences("login", MODE_PRIVATE);
-        Configs.BASE_URL = url.getString("url", "");
+//        SharedPreferences url = getSharedPreferences("login", MODE_PRIVATE);
+//        Configs.BASE_URL = url.getString("url", Constant.SERVE_URL);
 
         if (exit_app == false){
             autoLogin();
@@ -79,9 +75,14 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void initView() {
-        //退出app收到的参数
+        //特定客户的用户名密码
+        etUsername.setText(R.string.username);
+        etPassword.setText(R.string.password);
 
         mLoginPresenter = new LoginPresenter(this);
+//        SharedPreferences sp = getSharedPreferences("login", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor edit = sp.edit();
+//        edit.putString("url","http://thingsdevice.limaicloud.com").commit();
 
     }
 
@@ -142,6 +143,21 @@ public class LoginActivity extends BaseActivity implements LoginView {
         etPassword.setText("");
     }
 
+    @Override
+    public void loginSuc() {
+        SharedPreferences sp = getSharedPreferences("account", MODE_PRIVATE);
+        SharedPreferences.Editor edit = sp.edit();
+        if (checkBox.isChecked()) {//remember username and password
+            edit.putString("username", etUsername.getText().toString());
+            edit.putString("password", etPassword.getText().toString());
+            edit.putBoolean("checkbox", checkBox.isChecked());
+            edit.commit();
+        } else {
+            edit.putString("username", null);
+            edit.putString("password", null);
+        }
+    }
+
     public void autoLogin() {
         if (cb_boolean == true) {
             checkBox.setChecked(true);
@@ -149,7 +165,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
                 etUsername.setText(username);
                 etPassword.setText(password);
                 checkBox.setEnabled(false);
-                mLoginPresenter.autologin(username, password, Configs.BASE_URL);
+                mLoginPresenter.autologin(username, password, Constant.API_SERVE_URL);
             }
         }
     }
@@ -161,25 +177,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
 
-    @OnClick(R.id.iv_bottom_bg)
-    public void showBottomBg() {
-        mLoginPresenter.showBottomBg(this);
-    }
+//    @OnClick(R.id.iv_bottom_bg)
+//    public void showBottomBg() {
+//        mLoginPresenter.showBottomBg(this);
+//    }
 
-    @OnClick(R.id.checkbox)
-    public void isChecked() {
-        SharedPreferences sp = getSharedPreferences("account", MODE_PRIVATE);
-        SharedPreferences.Editor edit = sp.edit();
-        if (checkBox.isChecked()) {//记住密码
-            edit.putString("username", etUsername.getText().toString());
-            edit.putString("password", etPassword.getText().toString());
-            edit.putBoolean("checkbox", checkBox.isChecked());
-            edit.commit();
-        } else {
-            edit.putString("username", null);
-            edit.putString("password", null);
-        }
-    }
+//    @OnClick(R.id.checkbox)
+//    public void isChecked() {
+//
+//    }
 
 
     @Override

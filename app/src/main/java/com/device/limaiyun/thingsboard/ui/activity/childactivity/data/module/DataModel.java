@@ -1,9 +1,14 @@
 package com.device.limaiyun.thingsboard.ui.activity.childactivity.data.module;
 
+import android.content.Context;
+
 import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.DashBoardsBean;
 import com.device.limaiyun.thingsboard.bean.DeviceTypeBean;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
+import com.device.limaiyun.thingsboard.refreshToken.RefreshTokenModel;
+import com.device.limaiyun.thingsboard.refreshToken.RefreshTokenPort;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.Callback;
@@ -23,9 +28,10 @@ import okio.BufferedSource;
 public class DataModel implements DataPort {
 
     private DashBoardsBean boardsBean;
+    private RefreshTokenPort refreshTokenPort;
 
     @Override
-    public void getDashBoards(String scopes,String customerId, final DashboardsListener listener) {
+    public void getDashBoards(final Context mContext, String scopes, String customerId, final DashboardsListener listener) {
         if (TokenBean.TOKEN == null | TokenBean.TOKEN.equals("")) {
             listener.TokenIsEmpty();
             return;
@@ -89,7 +95,7 @@ public class DataModel implements DataPort {
 //                    }
 //                });
         if (scopes != null && scopes.equals("CUSTOMER_USER")) {
-            OkGo.get(Configs.BASE_URL + Configs.API_CUSTOMER + customerId + Configs.CUSTOMER_DEVICES)
+            OkGo.get(Constant.API_SERVE_URL + Constant.API_CUSTOMER + customerId + Constant.API_CUSTOMER_DEVICES)
                     .headers(Configs.Authorization, Configs.BEARER + Configs.SPACE + TokenBean.TOKEN)
                     .tag(this)
                     .execute(new Callback<Object>() {
@@ -112,6 +118,9 @@ public class DataModel implements DataPort {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
+                            }else if (response.code() == 401){
+                                refreshTokenPort = new RefreshTokenModel();
+                                refreshTokenPort.refreshToken(mContext);
                             }
                         }
 
@@ -146,7 +155,7 @@ public class DataModel implements DataPort {
                         }
                     });
         } else {
-            OkGo.get(Configs.BASE_URL + Configs.API_DEVICE_TYPES)
+            OkGo.get(Constant.API_SERVE_URL + Constant.API_DEVICE_TYPE)
                     .headers(Configs.Authorization, Configs.BEARER + Configs.SPACE + TokenBean.TOKEN)
                     .tag(this)
                     .execute(new Callback<Object>() {
