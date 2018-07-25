@@ -42,6 +42,8 @@
         <activity android:name=".ui.activity.childactivity.ThirdActivity.set.view.SettingActivity"/>
 
         <activity android:name=".ui.activity.childactivity.alarm.view.AlarmActivity"/>
+
+        <activity android:name=".ui.activity.wanted.view.WantedWebViewActivity"/>
         //bugly activity
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
