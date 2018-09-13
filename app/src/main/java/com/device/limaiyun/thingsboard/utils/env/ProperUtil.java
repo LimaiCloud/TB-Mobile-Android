@@ -16,7 +16,7 @@ public class ProperUtil {
         Properties propers = new Properties();
 
         try {
-            InputStream ins = context.getAssets().open("httpConfig.properties");
+            InputStream ins = context.getAssets().open("httpConfigtext.properties");
             propers.load(ins);
 
         } catch (IOException e) {
