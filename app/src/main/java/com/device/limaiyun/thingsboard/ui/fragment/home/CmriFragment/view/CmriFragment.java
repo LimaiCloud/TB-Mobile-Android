@@ -73,7 +73,7 @@ public class CmriFragment extends BaseFragment implements CmriView {
 
     @Override
     public void setUpData() {
-        presenter.getCmri();
+        presenter.getCmri(getContext());
     }
 
     @Override

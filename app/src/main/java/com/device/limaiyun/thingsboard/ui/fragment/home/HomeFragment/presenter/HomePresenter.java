@@ -1,5 +1,7 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.presenter;
 
+import android.content.Context;
+
 import com.device.limaiyun.thingsboard.base.BasePresenter;
 import com.device.limaiyun.thingsboard.bean.WantedBean;
 import com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.model.CustomerModel;
@@ -23,8 +25,8 @@ public class HomePresenter extends BasePresenter implements OnWantedListener {
         port = new CustomerModel();
     }
 
-    public void getTitle() {
-        port.getTitle(this);
+    public void getTitle(Context context) {
+        port.getTitle(context,this);
     }
 
     @Override

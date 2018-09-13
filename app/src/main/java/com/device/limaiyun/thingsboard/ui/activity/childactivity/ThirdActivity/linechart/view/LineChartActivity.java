@@ -13,7 +13,6 @@ import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebSettings;
@@ -27,7 +26,6 @@ import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
 import com.device.limaiyun.thingsboard.utils.env.Constant;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -87,7 +85,7 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
     @Override
     public void initData() {
         initWebViewSeeting();
-        linechart_webview.setWebChromeClient(new WebChromeClient());
+//        linechart_webview.setWebChromeClient(new WebChromeClient());
         linechart_webview.setWebViewClient(new WebViewClient() {
 
             @Override
@@ -114,12 +112,16 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
 //                String map ="{\"username\": \"343152747@qq.com\", \"password\": \"123456\"}";
 //                view.postUrl(Configs.BASE_URL + Configs.API_AUTH_LOGIN, postData.getBytes());
 
-                loginWebView(view, username, password);//模拟webview登录
+                if (url.equals(Constant.API_SERVE_URL + "/")) {
+                    loginWebView(view, username, password);//模拟webview登录
+                } else if (url.contains(Constant.API_HOME)) {
+                    linechart_webview.loadUrl(Constant.API_SERVE_URL + Constant.API_DASHBOARD);
+                }
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                if (Build.VERSION.SDK_INT <26){
+                if (Build.VERSION.SDK_INT < 26) {
                     view.loadUrl(Constant.API_SERVE_URL);
                     return true;
                 }
@@ -139,10 +141,10 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
             }
         });
 
-        Map<String, String> map = new HashMap<>();
-        map.put("username", username);
-        map.put("password", password);
-        WebViewCacheInterceptorInst.getInstance().loadUrl(linechart_webview, Constant.API_SERVE_URL, map);
+//        Map<String, String> map = new HashMap<>();
+//        map.put("username", username);
+//        map.put("password", password);
+        WebViewCacheInterceptorInst.getInstance().loadUrl(linechart_webview, Constant.API_SERVE_URL);
     }
 
     private void loginWebView(WebView view, String username, String password) {
@@ -152,25 +154,27 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
             username = username + "@limaicloud.com";
         }
         String strJS = null;
-        strJS = String.format("javascript:document.getElementsByTagName('button')[0].click();document.getElementById('username-input').value='" + username + "';" +
-                "document.getElementById('password-input').value='" + password + "';document.getElementsByTagName('button')[0].click();document.getElementsByTagName('button')[0].click();");
+//        strJS = String.format("javascript:document.getElementsByTagName('button')[0].click();document.getElementById('username-input').value='" + username + "';" +
+//                "document.getElementById('password-input').value='" + password + "';document.getElementsByTagName('button')[0].click();document.getElementsByTagName('button')[0].click();");
 //        strJS = String.format("javascript:document.getElementsByTagName('md-input-container')[1].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value';document.getElementById('password-input').click();document.getElementById('password-input').value='" + password + "';"+"document.getElementsByTagName('md-input-container')[0].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value';document.getElementById('username-input').value='" + username + "';document.getElementsByTagName('button')[0].click();document.getElementsByTagName('button')[0].click()");
 //            strJS = String.format("javascript:document.getElementsByTagName('md-input-container')[0].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value’;document.getElementsByTagName('md-input-container')[1].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value md-input-focused’;document.getElementById('password-input').value = '123456’;document.getElementsByTagName('md-input-container')[1].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value’;document.getElementsByTagName('button')[0].click();");
 //            strJS =String.format("javascript:document.getElementsByTagName('md-input-container')[0].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value md-input-focused';document.getElementById('username-input').value = '343152747@qq.com';document.getElementsByTagName('md-input-container')[0].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value';document.getElementsByTagName('md-input-container')[1].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value md-input-focused';document.getElementById('password-input').value = '123456';document.getElementsByTagName('md-input-container')[1].className = 'md-block md-icon-left md-tb-dark-theme md-input-has-value';document.getElementsByTagName('button')[0].click();");
 // strJS = "$('#usernamae-input').val('qiyue@limaicloud.com').trigger('input');$('#password-input').val('123456').trigger('input');";
 //        strJS = String.format("javascript:document.getElementByName('username-input').value = 'qiyue@limaicloud.com';angular.element($('#username-input')).triggerHandler('change');angular.element($('#password-input')).triggerHandler('focus');document.getElementByName('password-input').value = '123456';angular.element($('#password-input')).triggerHandler('change');document.getElementsByTagName('button')[0].click();");
+        strJS = String.format("javascript:var username = document.getElementById('username-input');\n" +
+                "username.value = '" + username + "';\n" +
+                "username.dispatchEvent(new Event('input'));\n" +
+                "var password = document.getElementById('password-input');\n" +
+                "password.value = '" + password + "';\n" +
+                "password.dispatchEvent(new Event('input'));\n" +
+                "document.getElementsByTagName('button')[0].click();\n");
+        Log.e("strJs", strJS);
         view.evaluateJavascript(strJS, new ValueCallback<String>() {
             @Override
             public void onReceiveValue(String value) {
-
+                linechart_webview.loadUrl(Constant.API_SERVE_URL + Constant.API_DASHBOARD);
             }
         });
-//        linechart_webview.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                linechart_webview.loadUrl(strJS);
-//            }
-//        });
     }
 
     private void initWebViewSeeting() {

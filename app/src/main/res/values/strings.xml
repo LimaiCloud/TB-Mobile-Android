@@ -62,5 +62,14 @@
     <string name="flow_path_alarm">流程警报</string>
     <string name="alarm_message">警报信息</string>
     <string name="wanted">公告信息</string>
+    <string name="supervision">任务督办</string>
+    <string name="headline">标题：</string>
+    <string name="supervision_time">时间：</string>
+    <string name="sup_status">状态：</string>
+    <string name="sup_start">开始</string>
+    <string name="assigner">分配人：</string>
+    <string name="someone">某某某</string>
+    <string name="easy_sup">查看任务更快捷</string>
+
 
 </resources>

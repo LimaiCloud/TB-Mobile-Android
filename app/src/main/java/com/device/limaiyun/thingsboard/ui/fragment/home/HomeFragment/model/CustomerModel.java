@@ -1,6 +1,9 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.model;
 
+import android.content.Context;
+
 import com.device.limaiyun.thingsboard.bean.WantedBean;
+import com.device.limaiyun.thingsboard.refreshToken.RefreshTokenModel;
 import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.Callback;
@@ -21,6 +24,7 @@ import okio.BufferedSource;
 public class CustomerModel implements CustomerPort {
 
     private List<WantedBean> wantedBeans;
+    private RefreshTokenModel refreshTokenModel;
 
     @Override
     public void getCustomer() {
@@ -28,7 +32,7 @@ public class CustomerModel implements CustomerPort {
     }
 
     @Override
-    public void getTitle(final OnWantedListener listener) {
+    public void getTitle(final Context context, final OnWantedListener listener) {
         OkGo.get(Constant.API_WANTED)
                 .tag(this)
                 .execute(new Callback<Object>() {
@@ -49,6 +53,9 @@ public class CustomerModel implements CustomerPort {
                                 e.printStackTrace();
                             }
                             listener.getWantedSuc(wantedBeans);
+                        }else if (response.code() == 401){
+                            refreshTokenModel = new RefreshTokenModel();
+                            refreshTokenModel.refreshToken(context);
                         }
                     }
 

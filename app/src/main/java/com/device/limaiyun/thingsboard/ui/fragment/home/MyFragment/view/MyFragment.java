@@ -44,7 +44,7 @@ public class MyFragment extends BaseFragment {
 
     @Override
     public void init() {
-        JWT jwt = new JWT(TokenBean.TOKEN);
+        JWT jwt = new JWT(TokenBean.getInstence().getToken());
         subject = jwt.getSubject();
     }
 

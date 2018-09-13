@@ -40,7 +40,7 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllAdapterViewHo
     public void onBindViewHolder(AllAdapter.AllAdapterViewHolder holder, final int position) {
         holder.tv_title.setText(list.get(position).getName());
         holder.tv_device_type.setText(list.get(position).getType());
-        JWT jwt = new JWT(TokenBean.TOKEN);
+        JWT jwt = new JWT(TokenBean.getInstence().getToken());
         String customerId = jwt.getClaim("customerId").asString();
         holder.tv_teanant_id.setText(customerId);
         if (listener != null) {

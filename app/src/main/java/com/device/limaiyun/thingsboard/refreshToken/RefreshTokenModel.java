@@ -56,14 +56,14 @@ public class RefreshTokenModel implements RefreshTokenPort {
                                 if (token != null) {
                                     Gson gson = new Gson();
                                     TokenBean tokenBean = gson.fromJson(token, TokenBean.class);
-                                    TokenBean.TOKEN = tokenBean.getToken();
+                                    TokenBean.getInstence().setToken(tokenBean.getToken());
                                     ToastUtils.showShortToast("Refresh Token Success!");
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         } else {
-                            ToastUtils.showShortToast("Refresh Token Fail");
+                            ToastUtils.showShortToast("Refresh Token Fail!!");
                         }
                     }
 

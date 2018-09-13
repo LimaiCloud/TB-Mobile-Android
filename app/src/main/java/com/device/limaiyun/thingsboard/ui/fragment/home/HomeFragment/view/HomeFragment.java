@@ -10,6 +10,7 @@ import com.device.limaiyun.thingsboard.base.BaseFragment;
 import com.device.limaiyun.thingsboard.bean.DecodeTokenBean;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
 import com.device.limaiyun.thingsboard.bean.WantedBean;
+import com.device.limaiyun.thingsboard.ui.activity.childactivity.Supervision.view.SupervisionActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.alarm.view.AlarmActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.data.view.DataActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.view.EquipmentActivity;
@@ -44,6 +45,8 @@ public class HomeFragment extends BaseFragment implements HomeView{
     RelativeLayout rl_message;
     @BindView(R.id.rl_alarm)
     RelativeLayout rl_alarm;
+    @BindView(R.id.rl_supervision)
+    RelativeLayout rl_supervision;
     private List<Integer> list_path;
     private List<String> list_title;
     private HomePresenter presenter;
@@ -54,7 +57,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
     public void setUpData() {
 
 //        presenter.getCustomer();
-        presenter.getTitle();
+        presenter.getTitle(getContext());
         list_path = new ArrayList<Integer>();
         list_title = new ArrayList<>();
         list_path.add(R.mipmap.home_banner1);
@@ -82,7 +85,7 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @Override
     public void init() {
         presenter = new HomePresenter(this);
-        JWT jwt = new JWT(TokenBean.TOKEN);
+        JWT jwt = new JWT(TokenBean.getInstence().getToken());
         decodeTokenBean = new DecodeTokenBean();
         decodeTokenBean.setSub(jwt.getSubject());
 //        decodeTokenBean.setUserId(jwt.getClaim("userId").asString());
@@ -133,6 +136,11 @@ public class HomeFragment extends BaseFragment implements HomeView{
         startActivity(intent);
     }
 
+    @OnClick(R.id.rl_supervision)
+    public void showSupervision(){
+        Intent intent = new Intent(getContext(),SupervisionActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public void initCustomerSuc() {

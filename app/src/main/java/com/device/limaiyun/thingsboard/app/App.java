@@ -69,6 +69,11 @@ public class App extends Application {
         Constant.API_WANTED = properties.getProperty(Constant.WANTED);
         Constant.API_WS_URL=properties.getProperty(Constant.WEBSOCKET);
         Constant.API_USERS = properties.getProperty(Constant.USERS);
+        Constant.API_DASHBOARD = properties.getProperty(Constant.DASHBOARD);
+        Constant.API_HOME = properties.getProperty(Constant.HOME);
+        Constant.API_SUPERVISIONPRESENTER =properties.getProperty(Constant.SUPERVISIONPRESENTER);
+        Constant.API_SUPERVISIONPRESENTER_LOGIN = properties.getProperty(Constant.SUPERVISIONPRESENTER_LOGIN);
+        Constant.API_WEKAN_USERS = properties.getProperty(Constant.WEKANUSERS);
     }
 
 

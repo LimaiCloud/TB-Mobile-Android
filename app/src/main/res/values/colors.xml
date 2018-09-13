@@ -13,5 +13,6 @@
     <color name="bottom_line_color" >#50504f</color>
     <color name="home_fragment_line_color">#eeeeee</color>
     <color name="status_toolBar_same_color">#3783d2</color>
+    <color name="text_color_black">#333333</color>
 
 </resources>

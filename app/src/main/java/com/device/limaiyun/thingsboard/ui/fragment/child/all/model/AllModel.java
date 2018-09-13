@@ -38,15 +38,15 @@ public class AllModel implements AllPort {
 
     @Override
     public void getDevuceType(final Context mContext, final OnDeviceTypeListener onDeviceTypeListener) {
-        if (TokenBean.TOKEN != "") {
-            JWT jwt = new JWT(TokenBean.TOKEN);
+        if (TokenBean.getInstence().getToken() != "") {
+            JWT jwt = new JWT(TokenBean.getInstence().getToken());
             customerId = jwt.getClaim("customerId").asString();
             scopes = jwt.getClaim("scopes").asList(String.class);
         }
         String scope = scopes.get(0);
-        if (scope!=null && scope.equals("CUSTOMER_USER")){
+        if (scope != null && scope.equals("CUSTOMER_USER")) {
             OkGo.get(Constant.API_SERVE_URL + Constant.API_CUSTOMER + customerId + Constant.API_CUSTOMER_DEVICES)
-                    .headers(Configs.Authorization, Configs.BEARER + Configs.SPACE + TokenBean.TOKEN)
+                    .headers(Configs.X_Authorization, Configs.BEARER + Configs.SPACE + TokenBean.getInstence().getToken())
                     .tag(this)
                     .execute(new Callback<Object>() {
                         @Override
@@ -68,9 +68,11 @@ public class AllModel implements AllPort {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
-                            }else if (response.code() == 401){
-                             refreshTokenPort = new RefreshTokenModel();
-                             refreshTokenPort.refreshToken(mContext);
+                            } else if (response.code() == 401) {
+                                refreshTokenPort = new RefreshTokenModel();
+                                refreshTokenPort.refreshToken(mContext);
+                            } else if (response.code() == 404) {
+                                onDeviceTypeListener.getDeviceTypeFaild();
                             }
                         }
 
@@ -104,9 +106,9 @@ public class AllModel implements AllPort {
                             return null;
                         }
                     });
-        }else {
-            OkGo.get(Constant.SERVER_URL_STR + Constant.API_DEVICE_TYPE)
-                    .headers(Configs.Authorization, Configs.BEARER + Configs.SPACE + TokenBean.TOKEN)
+        } else {
+            OkGo.get(Constant.API_SERVE_URL + Constant.API_DEVICE_TYPE)
+                    .headers(Configs.X_Authorization, Configs.BEARER + Configs.SPACE + TokenBean.getInstence().getToken())
                     .tag(this)
                     .execute(new Callback<Object>() {
                         @Override
@@ -129,6 +131,9 @@ public class AllModel implements AllPort {
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
+                            } else if (response.code() == 401) {
+                                refreshTokenPort = new RefreshTokenModel();
+                                refreshTokenPort.refreshToken(mContext);
                             }
                         }
 

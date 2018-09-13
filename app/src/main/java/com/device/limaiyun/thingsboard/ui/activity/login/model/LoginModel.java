@@ -55,7 +55,8 @@ public class LoginModel implements LoginPort {
                                     if (token != null) {
                                         Gson gson = new Gson();
                                         TokenBean tokenBean = gson.fromJson(token, TokenBean.class);
-                                        TokenBean.TOKEN = tokenBean.getToken();
+//                                        TokenBean.TOKEN = tokenBean.getToken();
+                                        TokenBean.getInstence().setToken(tokenBean.getToken());
                                         onLoginListener.onSuccess(tokenBean);
                                     }
                                 } catch (IOException e) {

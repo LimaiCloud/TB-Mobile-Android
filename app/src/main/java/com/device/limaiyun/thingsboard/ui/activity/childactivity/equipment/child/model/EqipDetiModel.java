@@ -39,7 +39,7 @@ public class EqipDetiModel implements EqipDetiPort {
         Log.e("---------", entityId);
 //        client.send("\"enttyId\":"+"\""+entityId+"\"");
         try {
-            client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.TOKEN), draft_17) {
+            client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.getInstence().getToken()), draft_17) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
 //                    String sent = "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":"+"\""+entityId+"\"" +",\"scope\":\"LATEST_TELEMETRY\",\"cmdId\":2}],\"historyCmds\":[],\"attrSubCmds\":[]}";
