@@ -37,11 +37,13 @@ public class SupervisionPresenter extends BasePresenter implements SupervisionLi
     }
 
     public void getUserBoards(String userid, String token) {
+        view.showLoading();
         prot.getUserBoard(Constant.API_SUPERVISIONPRESENTER + Constant.API_WEKAN_USERS, userid, token, this);
     }
 
     @Override
     public void showBoardsSuc(List<WeKanBoardBean> weKanBoardBeans) {
+        view.dismissLoading();
         view.showBoards(weKanBoardBeans);
     }
 

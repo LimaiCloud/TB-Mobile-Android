@@ -11,4 +11,6 @@ public interface SupervisionView {
 
     void getBoards(String userid,String token);
     void showBoards( List<WeKanBoardBean> weKanBoardBean);
+    void showLoading();
+    void dismissLoading();
 }

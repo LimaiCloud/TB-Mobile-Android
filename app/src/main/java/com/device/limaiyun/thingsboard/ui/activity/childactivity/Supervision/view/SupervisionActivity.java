@@ -3,8 +3,10 @@ package com.device.limaiyun.thingsboard.ui.activity.childactivity.Supervision.vi
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.adapter.SupervisionAdapter;
@@ -31,6 +33,8 @@ public class SupervisionActivity extends BaseActivity implements SupervisionView
     LinearLayout ll_back;
     @BindView(R.id.iv_add_supervision)
     ImageView iv_add_supervision;
+    @BindView(R.id.progressbar)
+    ProgressBar progressBar;
     private Context mContext;
 
     @Override
@@ -62,8 +66,18 @@ public class SupervisionActivity extends BaseActivity implements SupervisionView
     }
 
     @Override
+    public void showLoading() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
     public void getBoards(String userid, String token) {
         sup_presenter.getUserBoards(userid, token);
+    }
+
+    @Override
+    public void dismissLoading() {
+        progressBar.setVisibility(View.GONE);
     }
 
     @Override
@@ -84,4 +98,6 @@ public class SupervisionActivity extends BaseActivity implements SupervisionView
             }
         });
     }
+
+
 }
