@@ -45,7 +45,7 @@
     <string name="admin">管理员</string>
     <string name="eqipment_detil">数据详情</string>
     <string name="data_empty">暂无数据</string>
-    <string name="tv_title">类型</string>
+    <string name="tv_title">主题</string>
     <string name="time">2017-06-06</string>
     <string name="count">1000000</string>
     <string name="line_chart">面板详情</string>
@@ -63,7 +63,7 @@
     <string name="alarm_message">警报信息</string>
     <string name="wanted">公告信息</string>
     <string name="supervision">任务督办</string>
-    <string name="headline">标题：</string>
+    <string name="headline">主题：</string>
     <string name="supervision_time">时间：</string>
     <string name="sup_status">状态：</string>
     <string name="sup_start">开始</string>
