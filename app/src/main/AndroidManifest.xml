@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.device.limaiyun.thingsboard">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -46,6 +49,12 @@
         <activity android:name=".ui.activity.wanted.view.WantedWebViewActivity"/>
 
         <activity android:name=".ui.activity.childactivity.Supervision.view.SupervisionActivity"/>
+
+        <activity android:name=".ui.activity.childactivity.Supervision.child.view.SupervisionTaskDivisionActivity"/>
+
+        <activity android:name=".ui.activity.childactivity.Supervision.child.child.view.SupervisionDetilsActivity"/>
+
+        <activity android:name=".ui.activity.childactivity.Supervision.addSupervisionChild.view.AddSupervisionActivity"/>
         //bugly activity
         <activity
             android:name="com.tencent.bugly.beta.ui.BetaActivity"

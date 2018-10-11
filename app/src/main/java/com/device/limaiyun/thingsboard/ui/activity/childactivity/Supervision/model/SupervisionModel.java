@@ -1,8 +1,11 @@
 package com.device.limaiyun.thingsboard.ui.activity.childactivity.Supervision.model;
 
+import android.util.Log;
+
 import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.bean.WeKanBoardBean;
 import com.device.limaiyun.thingsboard.bean.WeKanUserToken;
+import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.Callback;
@@ -91,14 +94,14 @@ public class SupervisionModel implements SupervisionProt {
     }
 
     @Override
-    public void getUserBoard(String url, String userId, String token, final SupervisionListener listener) {
-        HashMap<String,Object> map = new HashMap<>();
-        map.put("action","takeOwnership");
-        JSONObject jsonObject = new JSONObject(map);
-        OkGo.put(url+userId)
+    public void getUserBoard(String url, final String userId, final String token, final SupervisionListener listener) {
+//        HashMap<String,Object> map = new HashMap<>();
+//        map.put("action","takeOwnership");
+//        JSONObject jsonObject = new JSONObject(map);
+        OkGo.get(url+userId+ Constant.API_WEKAN_BOARDS)
                 .headers(Configs.Authorization,Configs.BEARER+Configs.SPACE+token)
                 .headers(Configs.CONTENT_TYPE,Configs.APPLICATION_JSON)
-                .upJson(jsonObject)
+//                .upJson(jsonObject)
                 .tag(this)
                 .execute(new Callback<Object>() {
                     @Override
@@ -113,11 +116,12 @@ public class SupervisionModel implements SupervisionProt {
                             BufferedSource source = body.source();
                             try {
                                 String result = source.readUtf8();
+                                Log.e("resuslt",result);
                                 List<WeKanBoardBean> weKanBoardBeans = WeKanBoardBean.arrayWeKanBoardBeanFromData(result);
 //                                Gson gson = new Gson();
 //                                WeKanBoardBean weKanBoardBean = gson.fromJson(result, WeKanBoardBean.class);
                                 if (weKanBoardBeans != null){
-                                    listener.showBoardsSuc(weKanBoardBeans);
+                                    listener.showBoardsSuc(weKanBoardBeans, token,userId);
                                 }
                             } catch (IOException e) {
                                 e.printStackTrace();

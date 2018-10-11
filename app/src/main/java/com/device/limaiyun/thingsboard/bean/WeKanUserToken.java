@@ -49,7 +49,6 @@ public class WeKanUserToken {
 
         return new ArrayList();
 
-
     }
 
     public String getId() {

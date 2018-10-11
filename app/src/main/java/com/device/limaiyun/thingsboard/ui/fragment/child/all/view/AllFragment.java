@@ -59,6 +59,11 @@ public class AllFragment extends BaseFragment implements AllView {
     }
 
     @Override
+    protected void lazyLoad() {
+
+    }
+
+    @Override
     public void showToast(String msg) {
 
     }

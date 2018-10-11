@@ -13,7 +13,7 @@ public interface SupervisionListener {
 
     void getWeKanUserTokenFail();
 
-    void showBoardsSuc( List<WeKanBoardBean> weKanBoardBeans);
+    void showBoardsSuc( List<WeKanBoardBean> weKanBoardBeans,String token,String user_id);
 
     void showBoardFail();
 }

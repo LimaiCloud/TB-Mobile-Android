@@ -24,11 +24,15 @@ import ren.yale.android.cachewebviewlib.config.CacheExtensionConfig;
  */
 
 public class App extends Application {
-    private static App instance;
+    private static App instance = null;
     private Set<Activity> activities;
 
-    public static synchronized App getInstance() {
-        return instance;
+    public static App getInstance() {
+        synchronized (App.class){
+            if (instance == null)
+                instance = new App();
+            return instance;
+        }
     }
 
     @Override
@@ -74,6 +78,10 @@ public class App extends Application {
         Constant.API_SUPERVISIONPRESENTER =properties.getProperty(Constant.SUPERVISIONPRESENTER);
         Constant.API_SUPERVISIONPRESENTER_LOGIN = properties.getProperty(Constant.SUPERVISIONPRESENTER_LOGIN);
         Constant.API_WEKAN_USERS = properties.getProperty(Constant.WEKANUSERS);
+        Constant.API_WEKAN_BOARDS=properties.getProperty(Constant.BOARDS);
+        Constant.API_WEKAN_LISTS=properties.getProperty(Constant.LISTS);
+        Constant.API_=properties.getProperty(Constant.API);
+        Constant.API_CARDS=properties.getProperty(Constant.CARDS);
     }
 
 

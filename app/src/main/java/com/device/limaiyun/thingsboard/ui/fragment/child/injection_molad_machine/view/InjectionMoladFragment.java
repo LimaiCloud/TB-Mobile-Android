@@ -27,4 +27,9 @@ public class InjectionMoladFragment extends BaseFragment {
     public int getFragmentLayout() {
         return R.layout.injection_molad_machine_fragment;
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }

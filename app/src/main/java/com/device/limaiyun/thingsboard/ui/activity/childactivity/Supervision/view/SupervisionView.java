@@ -10,7 +10,7 @@ import java.util.List;
 public interface SupervisionView {
 
     void getBoards(String userid,String token);
-    void showBoards( List<WeKanBoardBean> weKanBoardBean);
+    void showBoards(List<WeKanBoardBean> weKanBoardBean, String token,String user_id);
     void showLoading();
     void dismissLoading();
 }

@@ -35,6 +35,14 @@ public class Constant {
 
     public static final String WEKANUSERS = "API_WEKAN_USERS";
 
+    public static final String BOARDS= "API_WEKAN_BOARDS";
+
+    public static final String LISTS="API_WEKAN_LISTS";
+
+    public static final String API="API_";
+
+    public static final String CARDS="API_WEKAN_CARDS";
+
     public static String API_SERVE_URL = "";
 
     public static String API_AUTH_LOGIN = "";
@@ -65,4 +73,11 @@ public class Constant {
 
     public static String API_WEKAN_USERS = "";
 
+    public static String API_WEKAN_BOARDS = "";
+
+    public static String API_WEKAN_LISTS="";
+
+    public static String API_="";
+
+    public static String API_CARDS="";
 }

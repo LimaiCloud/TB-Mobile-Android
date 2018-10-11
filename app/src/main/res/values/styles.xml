@@ -22,6 +22,9 @@
         <item name="android:windowEnterAnimation">@anim/dialog_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_out</item>
     </style>
-
+    //chechbox_sel
+    <style name="CustomCheckBoxTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+                 <item name="android:button">@drawable/checkbox_selector</item>
+             </style>
 
 </resources>

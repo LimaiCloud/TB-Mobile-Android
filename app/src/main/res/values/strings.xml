@@ -70,6 +70,17 @@
     <string name="assigner">分配人：</string>
     <string name="someone">某某某</string>
     <string name="easy_sup">查看任务更快捷</string>
+    <string name="chiose_status">更换状态</string>
+    <string name="content">内容：</string>
+    <string name="supervision_detitls">任务详情</string>
+    <string name="create_time">创建时间：</string>
+    <string name="end_time">到期时间</string>
+    <string name="tv_content">内容</string>
+    <string name="create_supervision">创建任务</string>
+    <string name="tv_description">描述</string>
+    <string name="tv_list">列表</string>
+    <string name="click_change_status">点击选择状态</string>
+    <string name="tv_create">创建</string>
 
 
 </resources>

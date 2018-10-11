@@ -2,7 +2,6 @@ package com.device.limaiyun.thingsboard.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +44,7 @@ public class CmriAdapter extends RecyclerView.Adapter<CmriAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.tv_crm_name.setText(mUserBean.getData().get(position).getName());
         holder.tv_cmr_title.setText(mUserBean.getData().get(position).getTitle());
+        holder.tv_crmcomapny.setText("博萨集团");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,10 +68,12 @@ public class CmriAdapter extends RecyclerView.Adapter<CmriAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_crm_name;
         TextView tv_cmr_title;
+        TextView tv_crmcomapny;
         public ViewHolder(View itemView) {
             super(itemView);
             tv_crm_name = itemView.findViewById(R.id.tv_crm_name);
             tv_cmr_title = itemView.findViewById(R.id.tv_cmr_title);
+            tv_crmcomapny = itemView.findViewById(R.id.tv_crmcomapny);
         }
     }
 

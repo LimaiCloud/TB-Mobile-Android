@@ -109,6 +109,11 @@ public class HomeFragment extends BaseFragment implements HomeView{
         return R.layout.fragment_msg;
     }
 
+    @Override
+    protected void lazyLoad() {
+
+    }
+
     @OnClick(R.id.rl_equipment_msg)
     public void showEqipmentMsg(){
         Intent intent = new Intent(getContext(),EquipmentActivity.class);

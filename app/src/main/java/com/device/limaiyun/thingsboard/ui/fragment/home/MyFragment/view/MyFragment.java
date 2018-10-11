@@ -53,6 +53,11 @@ public class MyFragment extends BaseFragment {
         return R.layout.fragment_my;
     }
 
+    @Override
+    protected void lazyLoad() {
+
+    }
+
     @OnClick(R.id.rl_setting)
     public void setAct(){
         Intent intent = new Intent(mContext, SettingActivity.class);

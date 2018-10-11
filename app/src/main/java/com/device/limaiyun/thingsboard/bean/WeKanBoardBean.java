@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class WeKanBoardBean {
 
+
     /**
      * _id : kEZAvHmggGDpufvJ8
      * title : 博萨任务督办

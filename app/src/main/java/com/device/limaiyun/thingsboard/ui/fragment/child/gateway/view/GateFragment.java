@@ -27,4 +27,9 @@ public class GateFragment extends BaseFragment {
     public int getFragmentLayout() {
         return R.layout.gateway_fragment;
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }

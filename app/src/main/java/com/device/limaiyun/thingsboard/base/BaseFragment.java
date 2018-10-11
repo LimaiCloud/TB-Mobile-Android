@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Spinner;
 
 import com.gyf.barlibrary.ImmersionBar;
 
@@ -24,6 +23,15 @@ public abstract class BaseFragment extends Fragment {
     private BaseActivity activity;
     private Unbinder mUnbinder;
     protected ImmersionBar mImmersionBar;
+
+    /**
+     * 视图是否已经初初始化
+     */
+    protected boolean isInit = false;
+    protected boolean isLoad = false;
+    protected final String TAG = "LazyLoadFragment";
+    private View view;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,12 +43,36 @@ public abstract class BaseFragment extends Fragment {
         contentView = inflater.inflate(getFragmentLayout(),container,false);
         mUnbinder = ButterKnife.bind(this,contentView);
         activity = (BaseActivity) getContext();
+        isInit = true;
+        /**初始化的时候去加载数据**/
+        isCanLoadData();
         if (isImmersionBarEnabled())
             initImmersionBar();
         init();
         setUpView();
         setUpData();
         return contentView;
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        isCanLoadData();
+    }
+
+    private void isCanLoadData() {
+        if (!isInit) {
+            return;
+        }
+
+        if (getUserVisibleHint()) {
+            lazyLoad();
+            isLoad = true;
+        } else {
+            if (isLoad) {
+                stopLoad();
+            }
+        }
     }
 
 
@@ -103,11 +135,23 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         if (mUnbinder != null)mUnbinder.unbind();
-
+        isInit = false;
+        isLoad = false;
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    /**
+     * 当视图初始化并且对用户可见的时候去真正的加载数据
+     */
+    protected abstract void lazyLoad();
+
+    /**
+     * 当视图已经对用户不可见并且加载过数据，如果需要在切换到其他页面时停止加载数据，可以覆写此方法
+     */
+    protected void stopLoad() {
     }
 }

@@ -42,9 +42,9 @@ public class SupervisionPresenter extends BasePresenter implements SupervisionLi
     }
 
     @Override
-    public void showBoardsSuc(List<WeKanBoardBean> weKanBoardBeans) {
+    public void showBoardsSuc(List<WeKanBoardBean> weKanBoardBeans,String token,String user_id) {
         view.dismissLoading();
-        view.showBoards(weKanBoardBeans);
+        view.showBoards(weKanBoardBeans,token,user_id);
     }
 
     @Override

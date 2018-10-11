@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.bean.WeKanBoardBean;
-import com.device.limaiyun.thingsboard.utils.ToastUtils;
 
 import java.util.List;
 
@@ -58,12 +56,7 @@ public class SupervisionAdapter extends RecyclerView.Adapter<SupervisionAdapter.
                 return true;
             }
         });
-        holder.iv_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showLongToast("编辑");
-            }
-        });
+
     }
 
     @Override
@@ -73,13 +66,11 @@ public class SupervisionAdapter extends RecyclerView.Adapter<SupervisionAdapter.
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_sup_title;
-        TextView tv_sup_time;
-        ImageView iv_edit;
+        TextView tv_descript;
         public ViewHolder(View itemView) {
             super(itemView);
             tv_sup_title = itemView.findViewById(R.id.tv_sup_title);
-            tv_sup_time = itemView.findViewById(R.id.tv_sup_time);
-            iv_edit = itemView.findViewById(R.id.iv_edit);
+            tv_descript = itemView.findViewById(R.id.tv_descript);
         }
     }
 

@@ -92,6 +92,11 @@ public class CmriFragment extends BaseFragment implements CmriView {
     }
 
     @Override
+    protected void lazyLoad() {
+
+    }
+
+    @Override
     public void showToast(String msg) {
 
     }

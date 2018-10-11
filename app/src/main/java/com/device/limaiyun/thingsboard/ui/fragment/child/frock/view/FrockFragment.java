@@ -27,4 +27,9 @@ public class FrockFragment extends BaseFragment {
     public int getFragmentLayout() {
         return R.layout.fragment_frock;
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }
