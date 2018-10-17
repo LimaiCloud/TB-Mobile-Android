@@ -21,7 +21,7 @@ public class ProperUtil {
             if (urlProper == null){
                 Properties propers = new Properties();
                 try {
-                    InputStream ins = context.getAssets().open("httpConfigtext.properties");
+                    InputStream ins = context.getAssets().open("httpConfig.properties");
                     propers.load(ins);
 
                 } catch (IOException e) {

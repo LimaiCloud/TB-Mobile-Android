@@ -81,6 +81,7 @@
     <string name="tv_list">列表</string>
     <string name="click_change_status">点击选择状态</string>
     <string name="tv_create">创建</string>
+    <string name="video_monitoring">视频监控</string>
 
 
 </resources>

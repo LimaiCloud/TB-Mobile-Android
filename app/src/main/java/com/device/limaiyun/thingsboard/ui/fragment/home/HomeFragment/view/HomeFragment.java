@@ -15,6 +15,7 @@ import com.device.limaiyun.thingsboard.ui.activity.childactivity.alarm.view.Alar
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.data.view.DataActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.equipment.view.EquipmentActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.newmessage.view.NewMessageActivity;
+import com.device.limaiyun.thingsboard.ui.activity.childactivity.video.view.VideoActivity;
 import com.device.limaiyun.thingsboard.ui.activity.wanted.view.WantedWebViewActivity;
 import com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.presenter.HomePresenter;
 import com.device.limaiyun.thingsboard.utils.GlideImageLoader;
@@ -47,6 +48,8 @@ public class HomeFragment extends BaseFragment implements HomeView{
     RelativeLayout rl_alarm;
     @BindView(R.id.rl_supervision)
     RelativeLayout rl_supervision;
+    @BindView(R.id.rl_video)
+    RelativeLayout rl_video;
     private List<Integer> list_path;
     private List<String> list_title;
     private HomePresenter presenter;
@@ -144,6 +147,12 @@ public class HomeFragment extends BaseFragment implements HomeView{
     @OnClick(R.id.rl_supervision)
     public void showSupervision(){
         Intent intent = new Intent(getContext(),SupervisionActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.rl_video)
+    public void showVideoList(){
+        Intent intent = new Intent(getContext(),VideoActivity.class);
         startActivity(intent);
     }
 

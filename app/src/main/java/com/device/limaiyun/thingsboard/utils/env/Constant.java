@@ -43,6 +43,10 @@ public class Constant {
 
     public static final String CARDS="API_WEKAN_CARDS";
 
+    public static final String YS_TOKEN="API_YS_TOKEN";
+
+    public static final String YS_VIDEO_LIST="API_YS_VIDEO_LIST";
+
     public static String API_SERVE_URL = "";
 
     public static String API_AUTH_LOGIN = "";
@@ -80,4 +84,8 @@ public class Constant {
     public static String API_="";
 
     public static String API_CARDS="";
+
+    public static String API_YS_TOKEN="";
+
+    public static String API_YS_VIDEO_LIST="";
 }

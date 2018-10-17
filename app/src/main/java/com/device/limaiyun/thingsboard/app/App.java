@@ -3,11 +3,13 @@ package com.device.limaiyun.thingsboard.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.utils.Utils;
 import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.device.limaiyun.thingsboard.utils.env.ProperUtil;
 import com.lzy.okgo.OkGo;
 import com.tencent.bugly.Bugly;
+import com.videogo.openapi.EZOpenSDK;
 
 import java.io.File;
 import java.util.HashSet;
@@ -42,8 +44,7 @@ public class App extends Application {
         Bugly.init(getApplicationContext(), "362244f72b", false);
         Utils.init(this);
         OkGo.getInstance().init(instance);
-
-
+        EZOpenSDK.initLib(instance, Configs.YS_KEY,"");
         getBaseUrl();
 
         WebViewCacheInterceptor.Builder builder = new WebViewCacheInterceptor.Builder(this);
@@ -82,6 +83,8 @@ public class App extends Application {
         Constant.API_WEKAN_LISTS=properties.getProperty(Constant.LISTS);
         Constant.API_=properties.getProperty(Constant.API);
         Constant.API_CARDS=properties.getProperty(Constant.CARDS);
+        Constant.API_YS_TOKEN = properties.getProperty(Constant.YS_TOKEN);
+        Constant.API_YS_VIDEO_LIST = properties.getProperty(Constant.YS_VIDEO_LIST);
     }
 
 

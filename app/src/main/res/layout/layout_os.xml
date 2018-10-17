@@ -7,43 +7,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_oa"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:background="@mipmap/oa_bg_blue" />
+
+        <RelativeLayout
+            android:id="@+id/rl_video"
+            android:layout_width="160dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="14.5dp"
+            android:background="@mipmap/video_monitor" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        >
+        android:layout_marginTop="15dp">
 
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/rl_supervision"-->
-            <!--android:layout_width="160dp"-->
-            <!--android:layout_height="75dp"-->
-            <!--android:background="@drawable/oa_bg">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/os_oa"-->
-                <!--android:textColor="#ffffff"-->
-                <!--android:textSize="16sp"-->
-                <!--android:layout_marginLeft="7dp"-->
-                <!--android:layout_marginBottom="20dp"-->
-                <!--android:layout_alignParentBottom="true"/>-->
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/easy_oa"-->
-                <!--android:textColor="#ffffff"-->
-                <!--android:textSize="12sp"-->
-                <!--android:layout_marginLeft="7dp"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_marginBottom="7dp"/>-->
-
-            <!--<ImageView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:src="@mipmap/oa_iv"-->
-                <!--android:layout_marginRight="5dp"-->
-                <!--android:layout_alignParentBottom="true"-->
-                <!--android:layout_marginBottom="5dp"/>-->
-        <!--</RelativeLayout>-->
         <RelativeLayout
             android:id="@+id/rl_supervision"
             android:layout_width="160dp"
@@ -53,30 +41,31 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/supervision"
                 android:textColor="#ffffff"
-                android:textSize="16sp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/easy_sup"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
-                android:layout_marginLeft="7dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="7dp"/>
+                android:textSize="12sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/sup_icon"
-                android:layout_marginRight="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/sup_icon" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -88,38 +77,40 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/os_erp"
                 android:textColor="#ffffff"
-                android:textSize="16sp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/financal_review"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
-                android:layout_marginLeft="7dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="7dp"/>
+                android:textSize="12sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:src="@mipmap/erp_iv"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-               />
+                android:src="@mipmap/erp_iv" />
         </RelativeLayout>
     </LinearLayout>
+
+
+
     <LinearLayout
-        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="160dp"
@@ -129,66 +120,67 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/os_mes"
                 android:textColor="#ffffff"
-                android:textSize="16sp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/easy_product"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
-                android:layout_marginLeft="7dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="7dp"/>
+                android:textSize="12sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/mes_iv"
-                android:layout_marginRight="5dp"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="5dp"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/mes_iv" />
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="160dp"
             android:layout_height="75dp"
-            android:layout_marginLeft="14.5dp"
+            android:layout_marginStart="14.5dp"
             android:background="@drawable/oa_plm">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/os_plm"
                 android:textColor="#ffffff"
-                android:textSize="16sp"
-                android:layout_marginLeft="7dp"
-                android:layout_marginBottom="20dp"
-                android:layout_alignParentBottom="true"/>
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="7dp"
                 android:text="@string/process_control"
                 android:textColor="#ffffff"
-                android:textSize="12sp"
-                android:layout_marginLeft="7dp"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="7dp"/>
+                android:textSize="12sp" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/plm_iv"
-                android:layout_marginRight="5dp"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginBottom="5dp"
-                />
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/plm_iv" />
         </RelativeLayout>
     </LinearLayout>
 

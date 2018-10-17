@@ -11,6 +11,7 @@ import com.device.limaiyun.thingsboard.R;
 import com.device.limaiyun.thingsboard.base.BaseActivity;
 import com.device.limaiyun.thingsboard.ui.activity.childactivity.ThirdActivity.set.presenter.SettingPresenter;
 import com.device.limaiyun.thingsboard.ui.activity.login.view.LoginActivity;
+import com.videogo.openapi.EZOpenSDK;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -40,6 +41,7 @@ public class SettingActivity extends BaseActivity implements SettingView {
 
     @OnClick(R.id.btn_exit)
     public void exitApp() {
+        EZOpenSDK.getInstance().logout();
         presenter.exitApp();
     }
 
