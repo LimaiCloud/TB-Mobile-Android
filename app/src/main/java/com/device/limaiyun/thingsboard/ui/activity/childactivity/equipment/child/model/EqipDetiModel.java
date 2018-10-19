@@ -36,15 +36,53 @@ public class EqipDetiModel implements EqipDetiPort {
     public void getNewDetial(String id, final EquipDetilListener listener) {
         draft_17 = new Draft_17();
         entityId = id;
-        Log.e("---------", entityId);
-//        client.send("\"enttyId\":"+"\""+entityId+"\"");
         try {
             client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.getInstence().getToken()), draft_17) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
 //                    String sent = "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":"+"\""+entityId+"\"" +",\"scope\":\"LATEST_TELEMETRY\",\"cmdId\":2}],\"historyCmds\":[],\"attrSubCmds\":[]}";
-//                    Log.e("---------", sent);
-                    client.send("{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":" + "\"" + entityId + "\"" + ",\"scope\":\"LATEST_TELEMETRY\",\"cmdId\":2}],\"historyCmds\":[],\"attrSubCmds\":[]}");
+                    String jsonStr = null;
+                    //tsSubCmds组
+                    JSONObject jsonObject1 = new JSONObject();
+                    JSONArray jsonArray1 = new JSONArray();
+                    try {
+                        jsonObject1.put("entityType", "DEVICE");
+                        jsonObject1.put("entityId", entityId);
+                        jsonObject1.put("scope", "LATEST_TELEMETRY");
+                        jsonObject1.put("cmdId", 2);
+                        jsonArray1.put(jsonObject1);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    //historyCmds组
+                    JSONArray jsonArray2 = new JSONArray();
+
+                    //attrSubCmds组
+                    JSONObject jsonObject3 = new JSONObject();
+                    JSONArray jsonArray3 = new JSONArray();
+                    try {
+                        jsonObject3.put("entityType", "DEVICE");
+                        jsonObject3.put("entityId", entityId);
+                        jsonObject3.put("scope", "CLIENT_SCOPE");
+                        jsonObject3.put("cmdId", 1);
+                        jsonArray3.put(jsonObject3);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("tsSubCmds", jsonArray1);
+                        jsonObject.put("historyCmds", jsonArray2);
+                        jsonObject.put("attrSubCmds", jsonArray3);
+                        jsonStr = jsonObject.toString();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    if (jsonStr != null)
+                        client.send(jsonStr);
+                    Log.e("jsonStr", jsonStr);
+
+//                  client.send("{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":" + "\"" + entityId + "\"" + ",\"scope\":\"LATEST_TELEMETRY\",\"cmdId\":2}],\"historyCmds\":[],\"attrSubCmds\":[]}");
 
                 }
 
@@ -90,7 +128,7 @@ public class EqipDetiModel implements EqipDetiPort {
                                 map.put(time, number);
                                 list_map.add(map);
                                 key_list.add(list_map);
-                                dataBean.getKey().set(i,list_map);
+                                dataBean.getKey().set(i, list_map);
 //                                dataBean.getKey().get(i).add(map);
                             }
                         }
@@ -104,7 +142,7 @@ public class EqipDetiModel implements EqipDetiPort {
 
                 @Override
                 public void onClose(int code, String reason, boolean remote) {
-                    Log.e("------------",reason.toString());
+                    Log.e("------------", reason.toString());
                 }
 
                 @Override

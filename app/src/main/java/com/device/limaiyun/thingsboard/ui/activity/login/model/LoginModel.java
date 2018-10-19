@@ -9,7 +9,10 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Progress;
 import com.lzy.okgo.request.base.Request;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
 
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -33,11 +36,15 @@ public class LoginModel implements LoginPort {
             } else {
                 username = username + "@limaicloud.com";
             }
-            String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";
+            HashMap<String,Object> map = new HashMap<>();
+            map.put("username",username);
+            map.put("password",password);
+            JSONObject jsonObject = new JSONObject(map);
+//            String parmer1 = "{\"username\":" + "\"" + username + "\"" + ",\"password\":" + "\"" + password + "\"" + "}";
             OkGo.post(Constant.API_SERVE_URL + Constant.API_AUTH_LOGIN)
                     .headers("Content-Type", "application/json")
                     .headers("Accept", "application/json")
-                    .upJson(parmer1)
+                    .upJson(jsonObject)
                     .tag(this)
                     .execute(new com.lzy.okgo.callback.Callback<Object>() {
                         @Override

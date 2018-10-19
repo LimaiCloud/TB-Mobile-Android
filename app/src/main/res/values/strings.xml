@@ -1,6 +1,8 @@
 <resources>
-
-    <string name="username">qiyue</string>
+    <!--comment text-->
+    <!--<string name="username">qiyue</string>-->
+    <!--qiyue-->
+    <string name="username">liuxudong</string>
     <string name="password">123456</string>
 
     <string name="app_name">力迈云</string>

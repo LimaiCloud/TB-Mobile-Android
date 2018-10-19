@@ -96,7 +96,8 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                webview_bar.setVisibility(View.GONE);
+                if (webview_bar != null)
+                    webview_bar.setVisibility(View.GONE);
 //                String postData = null;
 //                if (username.contains("@")) {
 //                    username = username;
@@ -112,7 +113,7 @@ public class LineChartActivity extends BaseActivity implements LineChartView {
 //                String map ="{\"username\": \"343152747@qq.com\", \"password\": \"123456\"}";
 //                view.postUrl(Configs.BASE_URL + Configs.API_AUTH_LOGIN, postData.getBytes());
 
-                if (url.equals(Constant.API_SERVE_URL + "/")) {
+                if (url.equals(Constant.API_SERVE_URL + "/") && linechart_webview != null) {
                     loginWebView(view, username, password);//模拟webview登录
                 } else if (url.contains(Constant.API_HOME)) {
                     linechart_webview.loadUrl(Constant.API_SERVE_URL + Constant.API_DASHBOARD);
