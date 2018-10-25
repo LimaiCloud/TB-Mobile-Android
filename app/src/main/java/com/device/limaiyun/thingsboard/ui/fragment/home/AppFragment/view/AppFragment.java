@@ -79,4 +79,9 @@ public class AppFragment extends BaseFragment {
         if (mImmersionBar != null)
             mImmersionBar.destroy();
     }
+
+    @Override
+    protected void lazyLoad() {
+
+    }
 }

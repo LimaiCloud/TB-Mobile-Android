@@ -3,11 +3,13 @@ package com.device.limaiyun.thingsboard.app;
 import android.app.Activity;
 import android.app.Application;
 
+import com.device.limaiyun.thingsboard.base.Configs;
 import com.device.limaiyun.thingsboard.utils.Utils;
 import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.device.limaiyun.thingsboard.utils.env.ProperUtil;
 import com.lzy.okgo.OkGo;
 import com.tencent.bugly.Bugly;
+import com.videogo.openapi.EZOpenSDK;
 
 import java.io.File;
 import java.util.HashSet;
@@ -24,11 +26,15 @@ import ren.yale.android.cachewebviewlib.config.CacheExtensionConfig;
  */
 
 public class App extends Application {
-    private static App instance;
+    private static App instance = null;
     private Set<Activity> activities;
 
-    public static synchronized App getInstance() {
-        return instance;
+    public static App getInstance() {
+        synchronized (App.class){
+            if (instance == null)
+                instance = new App();
+            return instance;
+        }
     }
 
     @Override
@@ -38,8 +44,7 @@ public class App extends Application {
         Bugly.init(getApplicationContext(), "362244f72b", false);
         Utils.init(this);
         OkGo.getInstance().init(instance);
-
-
+        EZOpenSDK.initLib(instance, Configs.YS_KEY,"");
         getBaseUrl();
 
         WebViewCacheInterceptor.Builder builder = new WebViewCacheInterceptor.Builder(this);
@@ -69,6 +74,17 @@ public class App extends Application {
         Constant.API_WANTED = properties.getProperty(Constant.WANTED);
         Constant.API_WS_URL=properties.getProperty(Constant.WEBSOCKET);
         Constant.API_USERS = properties.getProperty(Constant.USERS);
+        Constant.API_DASHBOARD = properties.getProperty(Constant.DASHBOARD);
+        Constant.API_HOME = properties.getProperty(Constant.HOME);
+        Constant.API_SUPERVISIONPRESENTER =properties.getProperty(Constant.SUPERVISIONPRESENTER);
+        Constant.API_SUPERVISIONPRESENTER_LOGIN = properties.getProperty(Constant.SUPERVISIONPRESENTER_LOGIN);
+        Constant.API_WEKAN_USERS = properties.getProperty(Constant.WEKANUSERS);
+        Constant.API_WEKAN_BOARDS=properties.getProperty(Constant.BOARDS);
+        Constant.API_WEKAN_LISTS=properties.getProperty(Constant.LISTS);
+        Constant.API_=properties.getProperty(Constant.API);
+        Constant.API_CARDS=properties.getProperty(Constant.CARDS);
+        Constant.API_YS_TOKEN = properties.getProperty(Constant.YS_TOKEN);
+        Constant.API_YS_VIDEO_LIST = properties.getProperty(Constant.YS_VIDEO_LIST);
     }
 
 

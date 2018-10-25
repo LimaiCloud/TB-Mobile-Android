@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_marginBottom="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:textColor="@color/text_color_black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/headline"
+                android:textSize="21sp"
+                />
+
+            <TextView
+                android:textColor="@color/text_color_black"
+                android:id="@+id/tv_sup_title"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="21sp"
+                android:maxLines="2"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/supervision_edit"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="30dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/supervision_time"
+                android:textSize="21sp"
+                android:textColor="@color/text_color_black"/>
+
+            <TextView
+                android:textColor="@color/text_color_black"
+                android:id="@+id/tv_sup_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/supervision_time"
+                android:textSize="21sp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/content"
+                android:textSize="21sp"
+                android:textColor="@color/text_color_black"/>
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sup_start"
+                android:textSize="21sp"
+                android:singleLine="true"
+                android:ellipsize="end"
+                android:textColor="@color/text_color_black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_centerVertical="true">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/assigner"
+                android:textSize="21sp"
+                android:textColor="@color/text_color_black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/someone"
+                android:textSize="21sp"
+                android:textColor="@color/text_color_black"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

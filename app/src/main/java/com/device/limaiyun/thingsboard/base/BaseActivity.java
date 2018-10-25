@@ -1,22 +1,13 @@
 package com.device.limaiyun.thingsboard.base;
 
 import android.app.Activity;
-import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.EventLog;
+import android.support.v4.app.FragmentActivity;
 
 import com.device.limaiyun.thingsboard.app.App;
 import com.device.limaiyun.thingsboard.ui.activity.login.view.LoginActivity;
-import com.device.limaiyun.thingsboard.utils.ToastUtils;
-import com.gyf.barlibrary.BarHide;
 import com.gyf.barlibrary.ImmersionBar;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -40,7 +31,7 @@ public abstract class BaseActivity extends FragmentActivity {
         }
         if (isImmersionBarEnabled())
         initImmersionBar();
-        mApp = (App) getApplication();
+        mApp = App.getInstance();
         mUnbinder = ButterKnife.bind(this);
         activity = this;
 

@@ -1,6 +1,8 @@
 <resources>
-
-    <string name="username">qiyue</string>
+    <!--comment text-->
+    <!--<string name="username">qiyue</string>-->
+    <!--qiyue-->
+    <string name="username">liuxudong</string>
     <string name="password">123456</string>
 
     <string name="app_name">力迈云</string>
@@ -45,7 +47,7 @@
     <string name="admin">管理员</string>
     <string name="eqipment_detil">数据详情</string>
     <string name="data_empty">暂无数据</string>
-    <string name="tv_title">类型</string>
+    <string name="tv_title">主题</string>
     <string name="time">2017-06-06</string>
     <string name="count">1000000</string>
     <string name="line_chart">面板详情</string>
@@ -62,5 +64,26 @@
     <string name="flow_path_alarm">流程警报</string>
     <string name="alarm_message">警报信息</string>
     <string name="wanted">公告信息</string>
+    <string name="supervision">任务督办</string>
+    <string name="headline">主题：</string>
+    <string name="supervision_time">时间：</string>
+    <string name="sup_status">状态：</string>
+    <string name="sup_start">开始</string>
+    <string name="assigner">分配人：</string>
+    <string name="someone">某某某</string>
+    <string name="easy_sup">查看任务更快捷</string>
+    <string name="chiose_status">更换状态</string>
+    <string name="content">内容：</string>
+    <string name="supervision_detitls">任务详情</string>
+    <string name="create_time">创建时间：</string>
+    <string name="end_time">到期时间</string>
+    <string name="tv_content">内容</string>
+    <string name="create_supervision">创建任务</string>
+    <string name="tv_description">描述</string>
+    <string name="tv_list">列表</string>
+    <string name="click_change_status">点击选择状态</string>
+    <string name="tv_create">创建</string>
+    <string name="video_monitoring">视频监控</string>
+
 
 </resources>

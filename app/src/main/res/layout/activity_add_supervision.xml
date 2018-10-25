@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7f7f7"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="#3783d2">
+
+
+        <LinearLayout
+            android:id="@+id/ll_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="21.7dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/back_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5.3dp"
+                android:text="@string/back"
+                android:textColor="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/create_supervision"
+            android:textColor="#ffffff"
+            android:textSize="22.7sp" />
+
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ctv_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="1"
+                    android:text="@string/tv_title"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/et_bg"
+                    android:padding="5dp"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ctv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="1"
+                    android:text="@string/tv_description"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/et_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/et_bg"
+                    android:padding="5dp"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ctv_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="1"
+                    android:text="@string/tv_list"
+                    android:textColor="@color/text_color_black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_change_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/tv_list_selector"
+                    android:gravity="center"
+                    android:text="@string/click_change_status"
+                    android:textColor="@drawable/tv_selector"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/btn_create"
+                android:text="@string/tv_create"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</LinearLayout>

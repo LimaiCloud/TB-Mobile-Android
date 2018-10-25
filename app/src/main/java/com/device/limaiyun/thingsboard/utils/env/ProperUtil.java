@@ -10,21 +10,26 @@ import java.util.Properties;
  * Created by ${Winter} on 2018/7/24.
  */
 public class ProperUtil {
-    private static Properties urlProper;
+    private static Properties urlProper = null;
 
-    public static Properties getUrlProper(Context context) {
-        Properties propers = new Properties();
+    private ProperUtil(){
 
-        try {
-            InputStream ins = context.getAssets().open("httpConfig.properties");
-            propers.load(ins);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        urlProper = propers;
-
-        return urlProper;
     }
 
+    public static Properties getUrlProper(Context context) {
+        synchronized (ProperUtil.class){
+            if (urlProper == null){
+                Properties propers = new Properties();
+                try {
+                    InputStream ins = context.getAssets().open("httpConfig.properties");
+                    propers.load(ins);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                urlProper = propers;
+            }
+            return urlProper;
+        }
+    }
 }

@@ -73,7 +73,7 @@ public class CmriFragment extends BaseFragment implements CmriView {
 
     @Override
     public void setUpData() {
-        presenter.getCmri();
+        presenter.getCmri(getContext());
     }
 
     @Override
@@ -89,6 +89,11 @@ public class CmriFragment extends BaseFragment implements CmriView {
     @Override
     public int getFragmentLayout() {
         return R.layout.fragment_cmr;
+    }
+
+    @Override
+    protected void lazyLoad() {
+
     }
 
     @Override

@@ -25,6 +25,28 @@ public class Constant {
 
     public static final String USERS = "API_USERS";//用户接口
 
+    public static final String DASHBOARD = "API_DASHBOARD";//仪表面板
+
+    public static final String HOME = "API_HOME";
+
+    public static final String SUPERVISIONPRESENTER = "API_SUPERVISIONPRESENTER";
+
+    public static final String SUPERVISIONPRESENTER_LOGIN = "API_SUPERVISIONPRESENTER_LOGIN";
+
+    public static final String WEKANUSERS = "API_WEKAN_USERS";
+
+    public static final String BOARDS= "API_WEKAN_BOARDS";
+
+    public static final String LISTS="API_WEKAN_LISTS";
+
+    public static final String API="API_";
+
+    public static final String CARDS="API_WEKAN_CARDS";
+
+    public static final String YS_TOKEN="API_YS_TOKEN";
+
+    public static final String YS_VIDEO_LIST="API_YS_VIDEO_LIST";
+
     public static String API_SERVE_URL = "";
 
     public static String API_AUTH_LOGIN = "";
@@ -45,4 +67,25 @@ public class Constant {
 
     public static String API_USERS = "";
 
+    public static String API_DASHBOARD = "";
+
+    public static String API_HOME = "";
+
+    public static String API_SUPERVISIONPRESENTER = "";
+
+    public static String API_SUPERVISIONPRESENTER_LOGIN = "";
+
+    public static String API_WEKAN_USERS = "";
+
+    public static String API_WEKAN_BOARDS = "";
+
+    public static String API_WEKAN_LISTS="";
+
+    public static String API_="";
+
+    public static String API_CARDS="";
+
+    public static String API_YS_TOKEN="";
+
+    public static String API_YS_VIDEO_LIST="";
 }

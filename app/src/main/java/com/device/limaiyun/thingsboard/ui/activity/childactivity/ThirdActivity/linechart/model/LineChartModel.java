@@ -46,7 +46,7 @@ public class LineChartModel implements LineChartPort {
         draft_17 = new Draft_17();
         this.entityId = entityId;
         try {
-            client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.TOKEN), draft_17) {
+            client = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.getInstence().getToken()), draft_17) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
                     if (lTime != null) {
@@ -122,7 +122,7 @@ public class LineChartModel implements LineChartPort {
         }
 
         try {
-            client2 = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.TOKEN), draft_17) {
+            client2 = new WebSocketClient(new URI(Constant.API_WS_URL + TokenBean.getInstence().getToken()), draft_17) {
                 @Override
                 public void onOpen(ServerHandshake handshakedata) {
                     String send = "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":" + "\"" + entityId + "\"" + ",\"keys\":\"count,state\",\"startTs\":1530084349000,\"timeWindow\":604801000,\"interval\":1000,\"limit\":200,\"agg\":\"NONE\",\"cmdId\":1}],\"historyCmds\":[],\"attrSubCmds\":[]}";
@@ -190,8 +190,8 @@ public class LineChartModel implements LineChartPort {
 
     @Override
     public void getTime(final LineChartListener listener) {
-        OkGo.get(Constant.SERVER_URL_STR + Constant.API_GET_TIME)
-                .headers(Configs.Authorization, Configs.BEARER + Configs.SPACE + TokenBean.TOKEN)
+        OkGo.get(Constant.API_SERVE_URL + Constant.API_GET_TIME)
+                .headers(Configs.X_Authorization, Configs.BEARER + Configs.SPACE + TokenBean.getInstence().getToken())
                 .tag(this)
                 .execute(new Callback<Object>() {
                     @Override

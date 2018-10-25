@@ -1,6 +1,6 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.CmriFragment.presenter;
 
-import android.media.session.MediaSession;
+import android.content.Context;
 
 import com.device.limaiyun.thingsboard.base.BasePresenter;
 import com.device.limaiyun.thingsboard.bean.TokenBean;
@@ -24,8 +24,8 @@ public class CmriPresenter extends BasePresenter implements CmriListener {
     }
 
 
-    public void getCmri() {
-        port.getCmri(TokenBean.TOKEN,this);
+    public void getCmri(Context context) {
+        port.getCmri(context,TokenBean.getInstence().getToken(),this);
     }
 
     @Override

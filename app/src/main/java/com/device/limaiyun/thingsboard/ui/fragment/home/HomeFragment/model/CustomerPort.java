@@ -1,5 +1,7 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.model;
 
+import android.content.Context;
+
 /**
  * Created by Administrator on 2018/6/25 0025.
  */
@@ -7,5 +9,5 @@ package com.device.limaiyun.thingsboard.ui.fragment.home.HomeFragment.model;
 public interface CustomerPort {
     void getCustomer();
 
-    void getTitle(OnWantedListener listener);
+    void getTitle(Context context,OnWantedListener listener);
 }

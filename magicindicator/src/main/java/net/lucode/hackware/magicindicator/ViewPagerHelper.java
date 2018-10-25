@@ -1,10 +1,6 @@
 package net.lucode.hackware.magicindicator;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-
-import java.util.List;
 
 /**
  * 简化和ViewPager绑定

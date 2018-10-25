@@ -44,13 +44,18 @@ public class MyFragment extends BaseFragment {
 
     @Override
     public void init() {
-        JWT jwt = new JWT(TokenBean.TOKEN);
+        JWT jwt = new JWT(TokenBean.getInstence().getToken());
         subject = jwt.getSubject();
     }
 
     @Override
     public int getFragmentLayout() {
         return R.layout.fragment_my;
+    }
+
+    @Override
+    protected void lazyLoad() {
+
     }
 
     @OnClick(R.id.rl_setting)

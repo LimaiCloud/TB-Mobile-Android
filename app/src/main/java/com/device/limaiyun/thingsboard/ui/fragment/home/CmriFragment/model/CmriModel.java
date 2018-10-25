@@ -1,8 +1,10 @@
 package com.device.limaiyun.thingsboard.ui.fragment.home.CmriFragment.model;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.device.limaiyun.thingsboard.bean.UsersBean;
+import com.device.limaiyun.thingsboard.refreshToken.RefreshTokenModel;
 import com.device.limaiyun.thingsboard.utils.ToastUtils;
 import com.device.limaiyun.thingsboard.utils.env.Constant;
 import com.lzy.okgo.OkGo;
@@ -27,8 +29,11 @@ import okio.BufferedSource;
  */
 
 public class CmriModel implements CmriPort {
+
+    private RefreshTokenModel refreshTokenModel;
+
     @Override
-    public void getCmri(String token, final CmriListener listener) {
+    public void getCmri(final Context context, String token, final CmriListener listener) {
         if (TextUtils.isEmpty(token) || token == null) {
             ToastUtils.showShortToast("无法获取用户信息");
             return;
@@ -78,7 +83,9 @@ public class CmriModel implements CmriPort {
                                     }
                                     usersBean.setData(data_list);
                                     listener.getCmriSuc(usersBean);
-                                } else {
+                                } else if (response.code() == 401){
+                                    refreshTokenModel = new RefreshTokenModel();
+                                    refreshTokenModel.refreshToken(context);
                                     listener.getCmriFail();
                                 }
                             } catch (IOException e) {
